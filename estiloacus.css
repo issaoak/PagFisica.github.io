@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #008b8b;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    background-color: #119c9c;
+    padding: 10px;
+}
+
+.menu-horizontal {
+    list-style: none;
+    display: flex;
+    justify-content: left;
+}
+
+.menu-horizontal > li > a {
+    display: block;
+    padding: 15px 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu-horizontal > li:hover {
+    background-color: #007374;
+}
+
+.menu-vertical {
+    position: absolute;
+    display: none;
+    list-style: none;
+    width: 200px;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.menu-horizontal li:hover .menu-vertical {
+    display: block;
+}
+
+.menu-vertical li:hover {
+    background-color: black;
+}
+
+.menu-vertical li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 15px 15px 20px;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #0b6464;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Otros estilos que puedas tener */
+
+#contenido p {
+    text-align: justify;
+    padding-right: 80px; /* Puedes ajustar el valor según tus preferencias */
+}
+
+/* Otros estilos que puedas tener */

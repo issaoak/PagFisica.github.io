@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecuaciones de Maxwell</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #119c9c;
+        }
+        h1 {
+            text-align: center;
+        }
+        .equation {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 0px solid #ccc;
+            border-radius: 5px;
+        }
+        .equation p {
+            text-align: justify;
+        }
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .bibliography {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ecuaciones de Maxwell</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <!-- Puedes agregar elementos de navegación aquí si lo deseas -->
+        </ul>
+    </nav>
+
+    <main>
+        <div class="equation">
+            <h2>Ley de Gauss </h2>
+            <p>El flujo eléctrico que atraviesa cualquier superficie cerrada es igual a la carga eléctrica encerrada en la superficie. La ley de Gauss describe la relación entre una carga eléctrica y el campo eléctrico que produce. Esto se suele representar en términos de líneas de campo eléctrico que se originan en cargas positivas y terminan en cargas negativas e indican la dirección del campo eléctrico en cada punto del espacio.</p>
+            <p>$$ \nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0} $$</p>
+        </div>
+
+        <div class="equation">
+            <h2>Ley de Gauss para el magnétismo</h2>
+            <p>El flujo del campo magnético a través de cualquier superficie cerrada es cero. Esto equivale a la afirmación de que las líneas de campo magnético son continuas, sin principio ni fin. Cualquier línea de campo magnético que entre en la región encerrada por esta superficie también debe salir de ella. No se conoce la existencia de monopolos magnéticos, donde terminarían las líneas de campo magnético.</p>
+            <p>$$ \nabla \cdot \mathbf{B} = 0 $$</p>
+        </div>
+
+        <div class="equation">
+            <h2>Ley de Faraday </h2>
+            <p>Un campo magnético cambiante induce una fuerza electromotriz (emf) y, por tanto, un campo eléctrico. La dirección de la emf se opone al cambio. Esta tercera ecuación de Maxwell, es la ley de inducción de Faraday e incluye la ley de Lenz. El campo eléctrico de un campo magnético cambiante tiene líneas de campo que forman bucles cerradas, sin principio ni fin.</p>
+            <p>$$ \nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t} $$</p>
+        </div>
+
+        <div class="equation">
+            <h2>Ley de Ampère-Maxwell </h2>
+            <p>Los campos magnéticos son generados por cargas en movimiento o por campos eléctricos cambiantes. Esta cuarta de las ecuaciones de Maxwell, la Ecuación engloba la ley de Ampère y añade otra fuente de campos magnéticos, concretamente los campos eléctricos cambiantes.</p>
+            <p>$$ \nabla \times \mathbf{B} = \mu_0 \left( \mathbf{J} + \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} \right) $$</p>
+        </div>
+
+        <div class="bibliography">
+            <h2>Referencia Bibliográfica</h2>
+            <p>Moebs, W. (2021, 17 noviembre). 16.1 Ecuaciones de Maxwell y ondas electromagnéticas - Física universitaria volumen 2 | OpenStax. <a href="https://openstax.org/books/f%C3%ADsica-universitaria-volumen-2/pages/16-1-ecuaciones-de-maxwell-y-ondas-electromagneticas">https://openstax.org/books/f%C3%ADsica-universitaria-volumen-2/pages/16-1-ecuaciones-de-maxwell-y-ondas-electromagneticas</a></p>
+            <p>Libretexts. (2022, 1 noviembre). 1.5: Ecuaciones de Maxwell. LibreTexts Español. <a href="https://espanol.libretexts.org/Ingenieria/Microondas_y_RF_Design_II_-_L%C3%ADneas_de_Transmisi%C3%B3n_(Steer)/01%3A_Introducci%C3%B3n_a_los_circuitos_de_microondas_distribuidos/1.05%3A_Ecuaciones_de_Maxwell">https://espanol.libretexts.org/Ingenieria/Microondas_y_RF_Design_II_-_L%C3%ADneas_de_Transmisi%C3%B3n_(Steer)/01%3A_Introducci%C3%B3n_a_los_circuitos_de_microondas_distribuidos/1.05%3A_Ecuaciones_de_Maxwell</a></p>
+        </div>
+    </main>
+
+    <footer>
+         2024 - Ecuaciones de Maxwell
+    </footer>
+
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</body>
+</html>

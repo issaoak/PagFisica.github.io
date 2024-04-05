@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ondas y Longitud de Onda</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <h2>Calculadora de Ondas</h2>
+    <div id="menu">
+        <label for="opcion">Elija el tipo de problema que desea resolver:</label>
+        <select id="opcion">
+            <option value="1">Onda armónica</option>
+            <option value="2">Frecuencia en términos de velocidad de la onda y longitud de onda</option>
+            <option value="3">Velocidad de la onda en términos de frecuencia y longitud de onda</option>
+            <option value="4">Periodo en términos de frecuencia</option>
+            <option value="5">Frecuencia angular en términos de frecuencia</option>
+            <option value="6">Número angular en función de la posición angular respecto al tiempo</option>
+            <option value="7">Intensidad para ondas electromagnéticas</option>
+            <option value="8">Índice de refracción en términos de velocidad de la luz y velocidad de la onda en el medio</option>
+            <option value="9">Coeficiente de absorción en términos de energía absorbida e intensidad incidente</option>
+            <option value="10">Calcular longitud de onda</option>
+        </select>
+        <button onclick="resolverProblema()">Resolver</button>
+    </div>
+
+    <script>
+        function ondaArmonica(amplitud, longitudOnda, frecuencia, tiempo, fase) {
+            return amplitud * Math.sin(2 * Math.PI * frecuencia * tiempo - (2 * Math.PI / longitudOnda) * tiempo + fase);
+        }
+
+        function frecuenciaVelocidadOnda(velocidad, longitudOnda) {
+            return velocidad / longitudOnda;
+        }
+
+        function velocidadOnda(frecuencia, longitudOnda) {
+            return frecuencia * longitudOnda;
+        }
+
+        function periodo(frecuencia) {
+            return 1 / frecuencia;
+        }
+
+        function frecuenciaAngular(frecuencia) {
+            return 2 * Math.PI * frecuencia;
+        }
+
+        function numeroAngular(longitudOnda) {
+            return 2 * Math.PI / longitudOnda;
+        }
+
+        function intensidad(camposElectricos) {
+            return 0.5 * 3e8 * 8.85e-12 * Math.pow(camposElectricos, 2);
+        }
+
+        function indiceRefraccion(velocidadLuz, velocidadOndaMedio) {
+            return velocidadLuz / velocidadOndaMedio;
+        }
+
+        function coeficienteAbsorcion(energiaAbsorbida, intensidadIncidente) {
+            return energiaAbsorbida / intensidadIncidente;
+        }
+
+        function resolverProblema() {
+            let opcion = parseInt(document.getElementById("opcion").value);
+
+            if (opcion === 10) {
+                let velocidadLuz = parseFloat(prompt("Ingrese la velocidad de la luz en el vacío (m/s): "));
+                let frecuencia = parseFloat(prompt("Ingrese la frecuencia de la luz (Hz): "));
+                let longitudOnda = velocidadLuz / frecuencia;
+                alert("La longitud de onda calculada es: " + longitudOnda.toExponential(2) + " metros.");
+            } else if (opcion === 1) {
+                let variableDeseada = prompt("Ingrese la variable que desea calcular (amplitud, longitud_onda, frecuencia, tiempo, fase): ");
+                if (variableDeseada === "amplitud") {
+                    let longitudOnda = parseFloat(prompt("Ingrese la longitud de onda: "));
+                    let frecuencia = parseFloat(prompt("Ingrese la frecuencia: "));
+                    let tiempo = parseFloat(prompt("Ingrese el tiempo: "));
+                    let fase = parseFloat(prompt("Ingrese la fase: "));
+                    let resultado = ondaArmonica(1, longitudOnda, frecuencia, tiempo, fase);
+                    alert("La amplitud es: " + resultado);
+                } else if (variableDeseada === "longitud_onda") {
+                    let amplitud = parseFloat(prompt("Ingrese la amplitud: "));
+                    let frecuencia = parseFloat(prompt("Ingrese la frecuencia: "));
+                    let tiempo = parseFloat(prompt("Ingrese el tiempo: "));
+                    let fase = parseFloat(prompt("Ingrese la fase: "));
+                    let resultado = 2 * Math.PI / Math.acos(ondaArmonica(amplitud, 1, frecuencia, tiempo, fase));
+                    alert("La longitud de onda es: " + resultado);
+                } else if (variableDeseada === "frecuencia") {
+                    let amplitud = parseFloat(prompt("Ingrese la amplitud: "));
+                    let longitudOnda = parseFloat(prompt("Ingrese la longitud de onda: "));
+                    let tiempo = parseFloat(prompt("Ingrese el tiempo: "));
+                    let fase = parseFloat(prompt("Ingrese la fase: "));
+                    let resultado = ondaArmonica(amplitud, longitudOnda, 1, tiempo, fase) / longitudOnda;
+                    alert("La frecuencia es: " + resultado);
+                } else if (variableDeseada === "tiempo") {
+                    let amplitud = parseFloat(prompt("Ingrese la amplitud: "));
+                    let longitudOnda = parseFloat(prompt("Ingrese la longitud de onda: "));
+                    let frecuencia = parseFloat(prompt("Ingrese la frecuencia: "));
+                    let fase = parseFloat(prompt("Ingrese la fase: "));
+                    let resultado = (Math.asin(ondaArmonica(amplitud, longitudOnda, frecuencia, 1, fase)) + (2 * Math.PI / longitudOnda)) / (2 * Math.PI * frecuencia);
+                    alert("El tiempo es: " + resultado);
+                } else if (variableDeseada === "fase") {
+                    let amplitud = parseFloat(prompt("Ingrese la amplitud: "));
+                    let longitudOnda = parseFloat(prompt("Ingrese la longitud de onda: "));
+                    let frecuencia = parseFloat(prompt("Ingrese la frecuencia: "));
+                    let tiempo = parseFloat(prompt("Ingrese el tiempo: "));
+                    let resultado = Math.asin(ondaArmonica(amplitud, longitudOnda, frecuencia, tiempo, 0)) - (2 * Math.PI * frecuencia * tiempo) + (2 * Math.PI / longitudOnda) * tiempo;
+                    alert("La fase es: " + resultado);
+                } else {
+                    alert("Variable no válida.");
+                }
+                // Lógica para resolver el problema de onda armónica
+            } else if (opcion === 2) {
+                let velocidad = parseFloat(prompt("Ingrese la velocidad de la onda: "));
+                let variableDeseada = prompt("Ingrese la variable que desea calcular (frecuencia, longitud_onda): ");
+                if (variableDeseada === "frecuencia") {
+                    let longitudOnda = parseFloat(prompt("Ingrese la longitud de onda: "));
+                    let resultado = frecuenciaVelocidadOnda(velocidad, longitudOnda);
+                    alert("La frecuencia es: " + resultado);
+                } else if (variableDeseada === "longitud_onda") {
+                    let frecuencia = parseFloat(prompt("Ingrese la frecuencia: "));
+                    let resultado = velocidad / frecuencia;
+                    alert("La longitud de onda es: " + resultado);
+                } else {
+                    alert("Variable no válida.");
+                }
+                // Lógica para resolver el problema de frecuencia en términos de velocidad y longitud de onda
+            } else if (opcion === 3) {
+                let frecuencia = parseFloat(prompt("Ingrese la frecuencia: "));
+                let variableDeseada = prompt("Ingrese la variable que desea calcular (velocidad, longitud_onda): ");
+                if (variableDeseada === "velocidad") {
+                    let longitudOnda = parseFloat(prompt("Ingrese la longitud de onda: "));
+                    let resultado = velocidadOnda(frecuencia, longitudOnda);
+                    alert("La velocidad de la onda es: " + resultado);
+                } else if (variableDeseada === "longitud_onda") {
+                    let velocidad = parseFloat(prompt("Ingrese la velocidad: "));
+                    let resultado = velocidad / frecuencia;
+                    alert("La longitud de onda es: " + resultado);
+                } else {
+                    alert("Variable no válida.");
+                }
+                // Lógica para resolver el problema de velocidad de la onda en términos de frecuencia y longitud de onda
+            } else if (opcion === 4) {
+                let frecuencia = parseFloat(prompt("Ingrese la frecuencia: "));
+                let resultado = periodo(frecuencia);
+                alert("El periodo es: " + resultado);
+                // Lógica para resolver el problema de periodo en términos de frecuencia
+            } else if (opcion === 5) {
+                let frecuencia = parseFloat(prompt("Ingrese la frecuencia: "));
+                let resultado = frecuenciaAngular(frecuencia);
+                alert("La frecuencia angular es: " + resultado);
+                // Lógica para resolver el problema de frecuencia angular
+            } else if (opcion === 6) {
+                let longitudOnda = parseFloat(prompt("Ingrese la longitud de onda: "));
+                let resultado = numeroAngular(longitudOnda);
+                alert("El número angular es: " + resultado);
+                // Lógica para resolver el problema de número angular
+            } else if (opcion === 7) {
+                let camposElectricos = parseFloat(prompt("Ingrese la amplitud del campo eléctrico: "));
+                let resultado = intensidad(camposElectricos);
+                alert("La intensidad es: " + resultado);
+                // Lógica para resolver el problema de intensidad para ondas electromagnéticas
+            } else if (opcion === 8) {
+                let velocidadLuz = 3e8;
+                let velocidadOndaMedio = parseFloat(prompt("Ingrese la velocidad de la onda en el medio: "));
+                let resultado = indiceRefraccion(velocidadLuz, velocidadOndaMedio);
+                alert("El índice de refracción es: " + resultado);
+                // Lógica para resolver el problema de índice de refracción
+            } else if (opcion === 9) {
+                let energiaAbsorbida = parseFloat(prompt("Ingrese la energía absorbida: "));
+                let intensidadIncidente = parseFloat(prompt("Ingrese la intensidad incidente: "));
+                let resultado = coeficienteAbsorcion(energiaAbsorbida, intensidadIncidente);
+                alert("El coeficiente de absorción es: " + resultado);
+                // Lógica para resolver el problema de coeficiente de absorción
+            } else {
+                alert("Opción no válida.");
+            }
+        }
+    </script>
+</body>
+</html>

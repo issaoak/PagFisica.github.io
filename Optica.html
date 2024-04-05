@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fórmula de la distancia focal de una lente convexa</title>
+</head>
+<body>
+
+<h2>Fórmula de la distancia focal de una lente convexa:</h2>
+<p>La fórmula es:</p>
+<p>1/f = 1/R<sub>1</sub> + 1/R<sub>2</sub></p>
+
+<form id="lensForm">
+  <label for="radius1">Radio de curvatura de la superficie convexa (R<sub>1</sub>):</label><br>
+  <input type="number" id="radius1" name="radius1" step="any"><br>
+  <label for="radius2">Radio de curvatura de la superficie plana (R<sub>2</sub>):</label><br>
+  <input type="number" id="radius2" name="radius2" step="any"><br><br>
+  <input type="submit" value="Calcular">
+</form>
+
+<p id="result"></p>
+
+<script>
+document.getElementById("lensForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  var radius1 = parseFloat(document.getElementById("radius1").value);
+  var radius2 = parseFloat(document.getElementById("radius2").value);
+  var focalLength = 1 / ((1 / radius1) + (1 / radius2));
+  document.getElementById("result").innerText = "La distancia focal es: " + focalLength.toFixed(2) + " metros";
+});
+</script>
+
+</body>
+</html>
