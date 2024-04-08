@@ -73,8 +73,21 @@ footer {
 /* Otros estilos que puedas tener */
 
 #contenido p {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 40px;
     text-align: justify;
-    padding-right: 80px; /* Puedes ajustar el valor según tus preferencias */
+    font-size: 20px;
+}
+.imagen {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.imagen img {
+    width: 70%;
+    height: auto;
+    border-radius: 8px;
 }
 
 /* Otros estilos que puedas tener */
