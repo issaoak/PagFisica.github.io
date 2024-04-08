@@ -4,6 +4,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f0f0f0;
 }
 
 header {
@@ -35,7 +36,10 @@ nav ul li a {
 }
 
 main {
+    
     padding: 20px;
+   
+    
 }
 
 footer {
@@ -48,3 +52,10 @@ footer {
     width: 100%;
 }
 
+#contenido  {
+    background-color: #e3e3e3;
+    padding: 20px;
+    margin-bottom: 40px;
+    text-align: justify;
+    font-size: 20px;
+}
