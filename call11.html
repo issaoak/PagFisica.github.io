@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Frecuencia Fundamental</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* Estilos para la página sobre la Historia de la Acústica */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Estilos específicos para la página sobre la Historia de la Acústica */
+        #historia {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 20px;
+        }
+
+        #historia h2 {
+            color: black;
+        }
+
+        #historia p {
+            line-height: 1.6;
+        }
+
+        .imagen {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .imagen img {
+            width: 70%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Estilos para la calculadora */
+        #calculadora {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 20px;
+        }
+
+        #calculadora h2 {
+            color: black;
+        }
+
+        #calculadora p {
+            line-height: 1.6;
+        }
+
+        #calculadora form {
+            margin-bottom: 20px;
+        }
+
+        #calculadora div {
+            margin-bottom: 10px;
+        }
+
+        #calculadora label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #calculadora input {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        #calculadora button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #008b8b;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #calculadora button:hover {
+            background-color: #005555;
+        }
+
+        #calculadora #resultado {
+            border-top: 2px solid #008b8b;
+            padding-top: 20px;
+        }
+
+        #calculadora #formula {
+            background-color: #d3d3d3;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        #calculadora #formula h3 {
+            color: #000;
+        }
+
+        #calculadora #formula p {
+            text-align: center;
+        }
+
+        #calculadora #formula ul {
+            list-style-type: none;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculadora</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="acustica.html">Regresar</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="calculadora">
+            <h2>Calcular Frecuencia Fundamental</h2>
+            <form id="formulario">
+                <div>
+                    <label for="velocidad">Velocidad del sonido (v):</label>
+                    <input type="number" id="velocidad" name="velocidad" required>
+                </div>
+                <div>
+                    <label for="longitud">Longitud de la columna de aire (L):</label>
+                    <input type="number" id="longitud" name="longitud" required>
+                </div>
+                <button type="submit">Calcular</button>
+            </form>
+            <div id="resultado"></div>
+            <div id="formula">
+                <h3>Fórmula:</h3>
+                <p>\( f = \frac{v}{2 \cdot L} \)</p>
+                <p>Donde:</p>
+                <ul>
+                    <li>f es la frecuencia fundamental de vibración.</li>
+                    <li>v es la velocidad del sonido en el aire.</li>
+                    <li>L es la longitud de la columna de aire.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Acústica - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        document.getElementById('formulario').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que se recargue la página al enviar el formulario
+
+            // Obtener los valores ingresados por el usuario
+            const velocidad = parseFloat(document.getElementById('velocidad').value);
+            const longitud = parseFloat(document.getElementById('longitud').value);
+
+            // Calcular la frecuencia fundamental usando la fórmula
+            const frecuencia = velocidad / (2 * longitud);
+
+            // Mostrar el resultado en el elemento 'resultado'
+            document.getElementById('resultado').innerHTML = `
+                <h3>Resultado:</h3>
+                <p>La frecuencia fundamental de vibración es: \( f = \\frac{${velocidad}}{2 \\times ${longitud}} = ${frecuencia.toFixed(2)} \) Hz.</p>
+                <p>Donde:</p>
+                <ul>
+                    <li>f es la frecuencia fundamental de vibración.</li>
+                    <li>v es la velocidad del sonido en el aire.</li>
+                    <li>L es la longitud de la columna de aire.</li>
+                </ul>
+            `;
+        });
+    </script>
+</body>
+</html>
