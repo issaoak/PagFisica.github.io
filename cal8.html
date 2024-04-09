@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ondas Electromagnéticas</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        section {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 20px;
+        }
+
+        h2 {
+            color: black;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #006666;
+        }
+
+        #resultado {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ondas Electromagnéticas</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="acustica.html">Regresar</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="calculo">
+            <h2>Calcular Velocidad de Onda Electromagnética</h2>
+            <p>La velocidad de una onda electromagnética en el vacío se calcula con la fórmula:</p>
+            <p style="text-align: center;">\(c = \frac{1}{{\sqrt{\mu_0 \cdot \varepsilon_0}}}\)</p>
+            <label for="permeabilidad">Permeabilidad del vacío (\(\mu_0\)): </label>
+            <input type="number" id="permeabilidad" step="any">
+            <label for="permitividad">Permitividad del vacío (\(\varepsilon_0\)): </label>
+            <input type="number" id="permitividad" step="any">
+            <button onclick="calcularVelocidad()">Calcular</button>
+            <p id="resultado"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Acústica - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function calcularVelocidad() {
+            const permeabilidad = parseFloat(document.getElementById('permeabilidad').value);
+            const permitividad = parseFloat(document.getElementById('permitividad').value);
+
+            if (isNaN(permeabilidad) || isNaN(permitividad)) {
+                alert('Por favor, ingresa valores numéricos válidos.');
+                return;
+            }
+
+            const velocidad = 1 / Math.sqrt(permeabilidad * permitividad);
+
+            document.getElementById('resultado').textContent = `La velocidad de la onda electromagnética es: ${velocidad.toFixed(2)} m/s`;
+        }
+    </script>
+</body>
+</html>

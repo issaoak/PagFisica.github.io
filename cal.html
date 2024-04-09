@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimiento Ondulatorio</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* Estilos para la página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        section {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 20px;
+            flex-grow: 1;
+        }
+
+        section h2 {
+            color: black;
+        }
+
+        section p {
+            line-height: 1.6;
+        }
+
+        input[type="number"], button {
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #008b8b;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        #resultado {
+            font-weight: bold;
+        }
+
+        #formula {
+            padding: 20px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculadora</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="acustica.html">Regresar</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Movimiento Ondulatorio</h2>
+            <label for="amplitud">Amplitud (A):</label>
+            <input type="number" id="amplitud"><br>
+
+            <label for="numero_onda">Número de onda (k):</label>
+            <input type="number" id="numero_onda"><br>
+
+            <label for="frecuencia_angular">Frecuencia angular (ω):</label>
+            <input type="number" id="frecuencia_angular"><br>
+
+            <label for="posicion">Posición (x):</label>
+            <input type="number" id="posicion"><br>
+
+            <label for="tiempo">Tiempo (t):</label>
+            <input type="number" id="tiempo"><br>
+
+            <label for="fase">Fase (ϕ):</label>
+            <input type="number" id="fase"><br>
+
+            <label for="resultado">Resultado:</label>
+            <span id="resultado"></span><br>
+
+            <button onclick="calcularMovimientoOndulatorio()">Calcular</button>
+        </section>
+
+        <div id="formula">
+            <h2>Fórmula del Movimiento Ondulatorio</h2>
+            <p>\( y(x,t) = A \cdot \sin(kx - ωt + ϕ) \)</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Acústica - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function calcularMovimientoOndulatorio() {
+            // Obtener los valores ingresados por el usuario
+            var A = parseFloat(document.getElementById('amplitud').value);
+            var k = parseFloat(document.getElementById('numero_onda').value);
+            var ω = parseFloat(document.getElementById('frecuencia_angular').value);
+            var x = parseFloat(document.getElementById('posicion').value);
+            var t = parseFloat(document.getElementById('tiempo').value);
+            var ϕ = parseFloat(document.getElementById('fase').value);
+
+            // Calcular el resultado
+            var resultado = A * Math.sin(k * x - ω * t + ϕ);
+
+            // Mostrar el resultado en la página
+            document.getElementById('resultado').textContent = resultado;
+        }
+    </script>
+</body>
+</html>

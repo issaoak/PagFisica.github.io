@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonido</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* Estilos para la página sobre la Historia de la Acústica */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Estilos específicos para la página sobre la Historia de la Acústica */
+        #historia {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 20px;
+        }
+
+        #historia h2 {
+            color: black;
+        }
+
+        #historia p {
+            line-height: 1.6;
+        }
+
+        .imagen {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .imagen img {
+            width: 70%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .formulario {
+            margin-bottom: 20px;
+        }
+
+        .formulario label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .formulario input[type="number"] {
+            width: 100px;
+            margin-bottom: 10px;
+        }
+
+        #resultado {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #formula {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sonido</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="acustica.html">Regresar</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="historia">
+            <!-- Contenido omitido para brevedad -->
+            <div id="formula">
+                <h2>Fórmula de la ecuación de onda acústica</h2>
+                <p>La ecuación de onda acústica se expresa como:</p>
+                <p style="text-align: center;">\(\frac{\partial^2 P}{\partial t^2} = c^2 \nabla^2 P\)</p>
+                <p>Donde:</p>
+                <ul>
+                    <li>\(P\) es la variación de presión con respecto al equilibrio.</li>
+                    <li>\(t\) es el tiempo.</li>
+                    <li>\(c\) es la velocidad del sonido en el medio.</li>
+                    <li>\(\nabla^2\) es el operador laplaciano, que describe la variación espacial en el medio.</li>
+                </ul>
+            </div>
+            <div class="formulario">
+                <label for="variacionPresion">Variación de presión (\(\partial P\)): </label>
+                <input type="number" id="variacionPresion" step="any">
+                <label for="tiempo">Tiempo (\(t\)): </label>
+                <input type="number" id="tiempo" step="any">
+                <label for="velocidadSonido">Velocidad del sonido (\(c\)): </label>
+                <input type="number" id="velocidadSonido" step="any">
+            </div>
+            <button onclick="calcularEcuacion()">Calcular</button>
+            <div id="resultado"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Acústica - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function calcularEcuacion() {
+            var variacionPresion = parseFloat(document.getElementById('variacionPresion').value);
+            var tiempo = parseFloat(document.getElementById('tiempo').value);
+            var velocidadSonido = parseFloat(document.getElementById('velocidadSonido').value);
+
+            var resultado = (velocidadSonido ** 2) * variacionPresion / (tiempo ** 2);
+
+            var resultadoHTML = "\\(\\frac{\\partial^2 P}{\\partial t^2} = " + resultado.toFixed(2) + "\\)";
+
+            document.getElementById('resultado').innerHTML = resultadoHTML;
+
+            MathJax.typeset();
+        }
+    </script>
+</body>
+</html>

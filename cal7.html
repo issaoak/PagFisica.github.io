@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energía de movimiento ondulatorio</title>
+    <style>
+        /* Estilos */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #008b8b;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #formula {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Energía de movimiento ondulatorio</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Calculadora de Energía de Movimiento Ondulatorio</h2>
+            <form id="formulario">
+                <label for="amplitud">Amplitud (A):</label>
+                <input type="number" id="amplitud" step="any" required><br><br>
+
+                <label for="constante">Constante k:</label>
+                <input type="number" id="constante" step="any" required><br><br>
+
+                <button type="button" onclick="calcularEnergia()">Calcular Energía</button>
+            </form>
+
+            <div id="formula">
+                <!-- Aquí se mostrará la fórmula -->
+                <p>La fórmula para calcular la energía del movimiento ondulatorio es:</p>
+                <p>$$ U = \frac{1}{2} k A^2 $$</p>
+            </div>
+
+            <div id="resultado">
+                <!-- Aquí se mostrará el resultado -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Acústica - Todos los derechos reservados</p>
+    </footer>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        function calcularEnergia() {
+            // Obteniendo los valores ingresados por el usuario
+            var amplitud = parseFloat(document.getElementById("amplitud").value);
+            var constante = parseFloat(document.getElementById("constante").value);
+
+            // Calculando la energía según la fórmula U = (1/2) * k * A^2
+            var energia = 0.5 * constante * Math.pow(amplitud, 2);
+
+            // Mostrando el resultado
+            var resultadoHTML = "<p>La energía del movimiento ondulatorio es: " + energia.toFixed(2) + "</p>";
+            document.getElementById("resultado").innerHTML = resultadoHTML;
+            MathJax.typeset(); // Actualizar la visualización de la fórmula
+        }
+    </script>
+</body>
+</html>

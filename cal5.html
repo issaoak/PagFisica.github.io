@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deformación - Ley de Hooke</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        h2 {
+            color: #008b8b;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #008b8b;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005f5f;
+        }
+
+        .formula {
+            margin-top: 20px;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Deformación - Ley de Hooke</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Calculadora de Deformación</h2>
+            <form id="deformacionForm">
+                <label for="constanteElasticidad">Constante de elasticidad (k):</label>
+                <input type="number" id="constanteElasticidad" name="constanteElasticidad" required>
+                <br>
+                <label for="fuerzaAplicada">Fuerza aplicada (F):</label>
+                <input type="number" id="fuerzaAplicada" name="fuerzaAplicada" required>
+                <br>
+                <label for="deformacionResultado">Deformación (x):</label>
+                <input type="number" id="deformacionResultado" name="deformacionResultado" readonly>
+                <br>
+                <button type="button" onclick="calcularDeformacion()">Calcular</button>
+            </form>
+            <div class="formula">La fórmula de la deformación es: \( x = \frac{F}{k} \)</div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Acústica - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function calcularDeformacion() {
+            // Obtener los valores del formulario
+            const k = parseFloat(document.getElementById('constanteElasticidad').value);
+            const F = parseFloat(document.getElementById('fuerzaAplicada').value);
+
+            // Calcular la deformación usando la ley de Hooke
+            const x = F / k;
+
+            // Mostrar el resultado en el campo de deformación
+            document.getElementById('deformacionResultado').value = x;
+        }
+    </script>
+</body>
+</html>

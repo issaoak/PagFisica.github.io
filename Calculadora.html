@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonido</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* Estilos para la página sobre la Historia de la Acústica */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Estilos específicos para la página sobre la Historia de la Acústica */
+        #historia {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 20px;
+        }
+
+        #historia h2 {
+            color: black;
+        }
+
+        #historia p {
+            line-height: 1.6;
+        }
+
+        .imagen {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .imagen img {
+            width: 70%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculadora</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="acustica.html">Regresar</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="historia">
+            <h2>Fórmula de la velocidad del sonido</h2>
+            <p>La velocidad del sonido en un medio material se puede calcular utilizando la siguiente fórmula:</p>
+            <p style="text-align: center;">\(v = \sqrt{\frac{B}{\rho}}\)</p>
+            <p>Donde:</p>
+            <ul>
+                <li>\(v\) es la velocidad del sonido en el medio (en metros por segundo).</li>
+                <li>\(B\)  es el módulo volumétrico del material.</li>
+                <li>\(\rho\) es la densidad del medio material (en kilogramos por metro cúbico).</li>
+            </ul>
+            <h2>Velocidad del Sonido</h2>
+            <label for="variable">Resolver para:</label>
+            <select id="variable" onchange="actualizarVariables()">
+                <option value="velocidad">Velocidad del sonido (\( v \))</option>
+                <option value="modulo">Módulo Volumétrico (\( B \))</option>
+                <option value="densidad">Densidad (\( \rho \))</option>
+            </select>
+            <br>
+            <label id="valor1-label" for="valor1">Valor 1:</label>
+            <input type="number" id="valor1" step="any">
+            <br>
+            <label id="valor2-label" for="valor2">Valor 2:</label>
+            <input type="number" id="valor2" step="any">
+            <br>
+            <button onclick="calcular()">Calcular</button>
+            <div id="resultado"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Acústica - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function actualizarVariables() {
+            var variable = document.getElementById("variable").value;
+            if (variable === "velocidad") {
+                document.getElementById("valor1-label").innerHTML = "Módulo Volumétrico (\( B \)):";
+                document.getElementById("valor2-label").innerHTML = "Densidad (\( \rho \)):";
+            } else if (variable === "modulo") {
+                document.getElementById("valor1-label").innerHTML = "Velocidad del sonido (\( v \)):";
+                document.getElementById("valor2-label").innerHTML = "Densidad (\( \rho \)):";
+            } else if (variable === "densidad") {
+                document.getElementById("valor1-label").innerHTML = "Velocidad del sonido (\( v \)):";
+                document.getElementById("valor2-label").innerHTML = "Módulo Volumétrico (\( B \)):";
+            }
+        }
+
+        function calcular() {
+            var variable = document.getElementById("variable").value;
+            var valor1 = parseFloat(document.getElementById("valor1").value);
+            var valor2 = parseFloat(document.getElementById("valor2").value);
+            var resultado;
+
+            if (variable === "velocidad") {
+                resultado = Math.sqrt(valor1 / valor2);
+                document.getElementById("resultado").innerHTML = "La velocidad del sonido es: " + resultado.toFixed(2) + " m/s";
+            } else if (variable === "modulo") {
+                resultado = valor2 * Math.pow(valor1, 2);
+                document.getElementById("resultado").innerHTML = "El módulo volumétrico es: " + resultado.toFixed(2);
+            } else if (variable === "densidad") {
+                resultado = valor1 / Math.pow(valor2, 2);
+                document.getElementById("resultado").innerHTML = "La densidad es: " + resultado.toFixed(2) + " kg/m^3";
+            }
+        }
+    </script>
+</body>
+</html>

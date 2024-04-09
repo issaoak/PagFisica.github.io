@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ley de Hooke</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* Estilos para la página sobre la Historia de la Acústica */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Estilos específicos para la página de la Ley de Hooke */
+        #leyDeHooke {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 20px;
+        }
+
+        #leyDeHooke h2 {
+            color: black;
+        }
+
+        #leyDeHooke p {
+            line-height: 1.6;
+        }
+
+        #leyDeHooke ul {
+            list-style-type: disc;
+        }
+
+        #leyDeHooke label {
+            font-weight: bold;
+        }
+
+        #leyDeHooke input[type="number"] {
+            width: 150px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        #leyDeHooke button {
+            padding: 10px 20px;
+            background-color: #008b8b;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #leyDeHooke button:hover {
+            background-color: #005353;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ley de Hooke</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="acustica.html">Regresar</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="leyDeHooke">
+            <h2>Fórmula de la Ley de Hooke</h2>
+            <p>La Ley de Hooke describe el comportamiento elástico de un cuerpo. La fuerza (\( F \)) necesaria para estirar o comprimir un resorte está dada por la siguiente fórmula:</p>
+            <p style="text-align: center;">\( F = -kx \)</p>
+            <p>Donde:</p>
+            <ul>
+                <li>\( F \) es la fuerza aplicada (en newtons).</li>
+                <li>\( k \) es la constante del resorte (en newtons por metro).</li>
+                <li>\( x \) es la deformación (en metros).</li>
+            </ul>
+            <p>Ingrese los valores para resolver la fórmula:</p>
+            <label for="kInput">Constante del resorte (\( k \)): </label>
+            <input type="number" id="kInput"><br><br>
+            <label for="xInput">Deformación (\( x \)): </label>
+            <input type="number" id="xInput"><br><br>
+            <label for="fInput">Fuerza resultante (\( F \)): </label>
+            <input type="number" id="fInput" readonly><br><br>
+            <button onclick="calcularFuerza()">Calcular</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Acústica - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function calcularFuerza() {
+            // Obtener los valores de k y x desde los campos de entrada
+            const k = parseFloat(document.getElementById("kInput").value);
+            const x = parseFloat(document.getElementById("xInput").value);
+
+            // Calcular la fuerza utilizando la fórmula de la Ley de Hooke
+            const fuerza = -k * x;
+
+            // Mostrar el resultado en el campo de entrada de la fuerza
+            document.getElementById("fInput").value = fuerza;
+        }
+    </script>
+</body>
+</html>

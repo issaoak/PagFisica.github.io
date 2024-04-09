@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esfuerzo</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* Estilos */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Estilos específicos para la calculadora de esfuerzo */
+        section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #008b8b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005757;
+        }
+
+        #resultado {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Esfuerzo</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="acustica.html">Regresar</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="formula">
+            <h2>Fórmula del esfuerzo</h2>
+            <p>La fórmula del esfuerzo se expresa como:</p>
+            <p style="text-align: center;">\( \sigma = \frac{F}{A} \)</p>
+            <p>Donde:</p>
+            <ul>
+                <li>\( \sigma \) es el esfuerzo (en unidades de presión, por ejemplo, Pascales).</li>
+                <li>\( F \) es la fuerza aplicada (en unidades de fuerza, por ejemplo, Newtons).</li>
+                <li>\( A \) es el área sobre la que se aplica la fuerza (en unidades de área, por ejemplo, metros cuadrados).</li>
+            </ul>
+        </section>
+
+        <section id="calculo">
+            <h2>Calculadora de esfuerzo</h2>
+            <label for="fuerza">Fuerza (N):</label>
+            <input type="number" id="fuerza">
+            <br>
+            <label for="area">Área (m<sup>2</sup>):</label>
+            <input type="number" id="area">
+            <br>
+            <button onclick="calcularEsfuerzo()">Calcular</button>
+            <p id="resultado"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Acústica - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function calcularEsfuerzo() {
+            // Obtenemos los valores de fuerza y área ingresados por el usuario
+            var fuerza = parseFloat(document.getElementById('fuerza').value);
+            var area = parseFloat(document.getElementById('area').value);
+            
+            // Calculamos el esfuerzo usando la fórmula
+            var esfuerzo = fuerza / area;
+            
+            // Mostramos el resultado en el elemento con id "resultado"
+            document.getElementById('resultado').textContent = "El esfuerzo es: " + esfuerzo.toFixed(2) + " Pa";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Acústica</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        section {
+            width: 48%; /* Ajusta el ancho según sea necesario */
+            padding: 20px;
+            text-align: justify;
+        }
+
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Estilos específicos para cada sección */
+        #acustica {
+            background-color: #f0f0f0;
+        }
+
+        #movimiento {
+            background-color: #e0e0e0;
+        }
+
+        /* Estilos para elementos comunes */
+        h2 {
+            color: black;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        input[type="number"], button {
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #008b8b;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #resultado {
+            font-weight: bold;
+        }
+
+        .formula {
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .formula h2 {
+            margin-top: 0;
+        }
+
+        .formula p {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculadora Acústica</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#acustica">Velocidad del Sonido</a></li>
+            <li><a href="#movimiento">Movimiento Ondulatorio</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="acustica">
+            <h2>Fórmula de la velocidad del sonido</h2>
+            <p>La velocidad del sonido en un medio material se puede calcular utilizando la siguiente fórmula:</p>
+            <p style="text-align: center;">\(v = \sqrt{\frac{B}{\rho}}\)</p>
+            <p>Donde:</p>
+            <ul>
+                <li>\(v\) es la velocidad del sonido en el medio (en metros por segundo).</li>
+                <li>\(B\)  es el módulo volumétrico del material.</li>
+                <li>\(\rho\) es la densidad del medio material (en kilogramos por metro cúbico).</li>
+            </ul>
+            <h2>Velocidad del Sonido</h2>
+            <label for="variable1">Resolver para:</label>
+            <select id="variable1" onchange="actualizarVariables('acustica')">
+                <option value="velocidad1">Velocidad del sonido (\( v \))</option>
+                <option value="modulo1">Módulo Volumétrico (\( B \))</option>
+                <option value="densidad1">Densidad (\( \rho \))</option>
+            </select>
+            <br>
+            <label id="valor1-label1" for="valor1">Valor 1:</label>
+            <input type="number" id="valor1" step="any">
+            <br>
+            <label id="valor2-label1" for="valor2">Valor 2:</label>
+            <input type="number" id="valor2" step="any">
+            <br>
+            <button onclick="calcular('acustica')">Calcular</button>
+            <div id="resultado1"></div>
+            <div class="formula">
+                <h2>Fórmula de la velocidad del sonido</h2>
+                <p>\(v = \sqrt{\frac{B}{\rho}}\)</p>
+            </div>
+        </section>
+
+        <section id="movimiento">
+            <h2>Movimiento Ondulatorio</h2>
+            <label for="amplitud">Amplitud (A):</label>
+            <input type="number" id="amplitud"><br>
+
+            <label for="numero_onda">Número de onda (k):</label>
+            <input type="number" id="numero_onda"><br>
+
+            <label for="frecuencia_angular">Frecuencia angular (ω):</label>
+            <input type="number" id="frecuencia_angular"><br>
+
+            <label for="posicion">Posición (x):</label>
+            <input type="number" id="posicion"><br>
+
+            <label for="tiempo">Tiempo (t):</label>
+            <input type="number" id="tiempo"><br>
+
+            <label for="fase">Fase (ϕ):</label>
+            <input type="number" id="fase"><br>
+
+            <label for="resultado">Resultado:</label>
+            <span id="resultado2"></span><br>
+
+            <button onclick="calcularMovimientoOndulatorio()">Calcular</button>
+            <div class="formula">
+                <h2>Fórmula del Movimiento Ondulatorio</h2>
+                <p>\( y(x,t) = A \cdot \sin(kx - ωt + ϕ) \)</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Acústica - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function actualizarVariables(sectionId) {
+            var variable = document.getElementById("variable1").value;
+            if (variable === "velocidad1") {
+                document.getElementById("valor1-label1").innerHTML = "Módulo Volumétrico (\( B \)):";
+                document.getElementById("valor2-label1").innerHTML = "Densidad (\( \rho \)):";
+            } else if (variable === "modulo1") {
+                document.getElementById("valor1-label1").innerHTML = "Velocidad del sonido (\( v \)):";
+                document.getElementById("valor2-label1").innerHTML = "Densidad (\( \rho \)):";
+            } else if (variable === "densidad1") {
+                document.getElementById("valor1-label1").innerHTML = "Velocidad del sonido (\( v \)):";
+                document.getElementById("valor2-label1").innerHTML = "Módulo Volumétrico (\( B \)):";
+            }
+        }
+
+        function calcular(sectionId) {
+            var variable = document.getElementById("variable1").value;
+            var valor1 = parseFloat(document.getElementById("valor1").value);
+            var valor2 = parseFloat(document.getElementById("valor2").value);
+            var resultado;
+
+            if (variable === "velocidad1") {
+                resultado = Math.sqrt(valor1 / valor2);
+                document.getElementById("resultado1").innerHTML = "La velocidad del sonido es: " + resultado.toFixed(2) + " m/s";
+            } else if (variable === "modulo1") {
+                resultado = valor2 * Math.pow(valor1, 2);
+                document.getElementById("resultado1").innerHTML = "El módulo volumétrico es: " + resultado.toFixed(2);
+            } else if (variable === "densidad1") {
+                resultado = valor1 / Math.pow(valor2, 2);
+                document.getElementById("resultado1").innerHTML = "La densidad es: " + resultado.toFixed(2) + " kg/m^3";
+            }
+        }
+
+        function calcularMovimientoOndulatorio() {
+            // Obtener los valores ingresados por el usuario
+            var A = parseFloat(document.getElementById('amplitud').value);
+            var k = parseFloat(document.getElementById('numero_onda').value);
+            var ω = parseFloat(document.getElementById('frecuencia_angular').value);
+            var x = parseFloat(document.getElementById('posicion').value);
+            var t = parseFloat(document.getElementById('tiempo').value);
+            var ϕ = parseFloat(document.getElementById('fase').value);
+
+            // Calcular el resultado
+            var resultado = A * Math.sin(k * x - ω * t + ϕ);
+
+            // Mostrar el resultado en la página
+            document.getElementById('resultado2').textContent = resultado;
+        }
+    </script>
+</body>
+</html>

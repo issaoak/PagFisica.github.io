@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potencia Media de Onda Senoidal</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #005353;
+        }
+
+        #resultado {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Potencia Media de Onda Senoidal</h1>
+    </header>
+
+    <main>
+        <section id="calculo">
+            <h2>Calculadora de Potencia Media de Onda Senoidal</h2>
+            <p>Ingrese los valores para calcular la potencia media:</p>
+            <label for="intensidad">Intensidad Máxima (I<sub>max</sub>):</label>
+            <input type="number" id="intensidad" min="0">
+            <label for="resistencia">Resistencia del Medio (R):</label>
+            <input type="number" id="resistencia" min="0">
+            <button onclick="calcularPotencia()">Calcular</button>
+            <p id="resultado"></p>
+            <p>La potencia media se calcula utilizando la fórmula:</p>
+            <p style="text-align: center;">\(P_{\text{media}} = \frac{1}{2} I_{\text{max}}^2 R\)</p>
+            <p>Donde:</p>
+            <ul>
+                <li>\(P_{\text{media}}\) es la potencia media de la onda senoidal.</li>
+                <li>\(I_{\text{max}}\) es la intensidad máxima de la onda.</li>
+                <li>\(R\) es la resistencia del medio en el que se propaga la onda.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Acústica - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function calcularPotencia() {
+            var intensidadMaxima = parseFloat(document.getElementById("intensidad").value);
+            var resistencia = parseFloat(document.getElementById("resistencia").value);
+
+            if (isNaN(intensidadMaxima) || isNaN(resistencia)) {
+                document.getElementById("resultado").textContent = "Por favor, ingrese valores numéricos válidos.";
+            } else {
+                var potenciaMedia = (1 / 2) * Math.pow(intensidadMaxima, 2) * resistencia;
+                document.getElementById("resultado").textContent = "La potencia media de la onda senoidal es: " + potenciaMedia.toFixed(2);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Intensidad Sonora</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #008b8b;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #005555;
+        }
+
+        #resultado {
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Acustica</h1>
+    </header>
+
+    <nav>
+        <!-- Opciones de menú si es necesario -->
+    </nav>
+
+    <main>
+        <section>
+            <h2>Fórmula de Ley Inverso del Cuadrado para la Intensidad</h2>
+            <p>La intensidad sonora se calcula utilizando la siguiente fórmula:</p>
+            <p style="text-align: center;">\(I = \frac{P}{4\pi r^2}\)</p>
+            <p>Donde:</p>
+            <ul>
+                <li>\(I\) es la intensidad sonora.</li>
+                <li>\(P\) es la potencia.</li>
+                <li>\(r\) es la distancia desde la fuente del sonido.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Calculadora de Intensidad Sonora</h2>
+            <form id="intensityCalculator">
+                <label for="potencia">Potencia (en vatios):</label>
+                <input type="number" id="potencia" name="potencia" required><br>
+                <label for="distancia">Distancia (en metros):</label>
+                <input type="number" id="distancia" name="distancia" required><br>
+                <button type="button" onclick="calcularIntensidad()">Calcular Intensidad</button>
+            </form>
+            <div id="resultado"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Acústica - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function calcularIntensidad() {
+            var potencia = parseFloat(document.getElementById("potencia").value);
+            var distancia = parseFloat(document.getElementById("distancia").value);
+            var intensidad = potencia / (4 * Math.PI * distancia ** 2);
+            document.getElementById("resultado").innerHTML = "<p>La intensidad sonora es: " + intensidad.toFixed(2) + " W/m²</p>";
+        }
+    </script>
+</body>
+</html>

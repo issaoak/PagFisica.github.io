@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonido</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* Estilos para la página sobre la Historia de la Acústica */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Estilos específicos para la página sobre la Historia de la Acústica */
+        #historia {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 20px;
+        }
+
+        #historia h2 {
+            color: black;
+        }
+
+        #historia p {
+            line-height: 1.6;
+        }
+
+        .imagen {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .imagen img {
+            width: 70%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Estilos para el formulario */
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #008b8b;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #006666;
+        }
+
+        #resultado {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Acustica</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="acustica.html">Regresar</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="historia">
+            <h2>Fórmula del Movimiento Armónico Simple (MAS)</h2>
+            <p>La ecuación del MAS es \(x(t) = A \cos(\omega t + \phi)\), donde \(A\) es la amplitud, \(\omega\) es la frecuencia angular y \(\phi\) es la fase inicial.</p>
+            <form id="mas-form">
+                <label for="amplitud">Amplitud (A):</label>
+                <input type="number" id="amplitud" name="amplitud" required>
+                <label for="frecuencia">Frecuencia angular (ω):</label>
+                <input type="number" id="frecuencia" name="frecuencia" required>
+                <label for="fase">Fase inicial (ϕ):</label>
+                <input type="number" id="fase" name="fase" required>
+                <label for="tiempo">Tiempo (t):</label>
+                <input type="number" id="tiempo" name="tiempo" required>
+                <button type="button" onclick="calcularMAS()">Calcular</button>
+            </form>
+            <div id="resultado"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Acústica - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function calcularMAS() {
+            const A = parseFloat(document.getElementById('amplitud').value);
+            const omega = parseFloat(document.getElementById('frecuencia').value);
+            const phi = parseFloat(document.getElementById('fase').value);
+            const t = parseFloat(document.getElementById('tiempo').value);
+
+            const resultado = A * Math.cos(omega * t + phi);
+
+            document.getElementById('resultado').innerHTML = `El valor de x(t) es: ${resultado}`;
+        }
+    </script>
+</body>
+</html>
