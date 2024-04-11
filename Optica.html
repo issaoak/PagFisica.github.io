@@ -1,35 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fórmula de la distancia focal de una lente convexa</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Óptica</title>
+    <link rel="stylesheet" href="estilooptica.css">
 </head>
 <body>
+    <header>
+        <h1>Óptica</h1>
+    </header>
 
-<h2>Fórmula de la distancia focal de una lente convexa:</h2>
-<p>La fórmula es:</p>
-<p>1/f = 1/R<sub>1</sub> + 1/R<sub>2</sub></p>
+    <nav>
+        <ul class="menu-horizontal">
+            <li><a href="index.html">Inicio</a></li>
+            <li>
+                <a href="#">Temas</a>
+                <ul class="menu-vertical">
+                    <li><a href="Historia_optica.html">Historia de la Óptica</a></li>
+                    <li><a href="Conceptos_optica.html">Conceptos Básicos</a></li>
+                    <li><a href="Refraccion.html">Refracción</a></li>
+                    <li><a href="Reflexion.html">Reflexión</a></li>
+                    <li><a href="Dispersión.html">Dispersión</a></li>
+                    <li><a href="Lentes.html">Lentes</a></li>
+                    <li><a href="Mirropt.html">Espejos</a></li>
+                    <li><a href="Ondopt.html">Óptica Ondulatoria</a></li>
+                    <li><a href="Fibrasopt.html">Fibras Ópticas</a></li>
+                    <li><a href="Holografia.html">Holografía</a></li>
+                    <li><a href="Interferencia.html">Interferencia</a></li>
+                    <li><a href="Difraccion.html">Difracción</a></li>
+                    <li><a href="Polarizacion.html">Polarización</a></li>
+                    <li><a href="Aplicaciones.html">Aplicaciones en la Vida Cotidiana</a></li>
+                    <li><a href="Avances.html">Avances Recientes</a></li>
+                </ul>
+            </li>
+           
+        </ul>
+    </nav>
 
-<form id="lensForm">
-  <label for="radius1">Radio de curvatura de la superficie convexa (R<sub>1</sub>):</label><br>
-  <input type="number" id="radius1" name="radius1" step="any"><br>
-  <label for="radius2">Radio de curvatura de la superficie plana (R<sub>2</sub>):</label><br>
-  <input type="number" id="radius2" name="radius2" step="any"><br><br>
-  <input type="submit" value="Calcular">
-</form>
+    <main>
+        <section id="contenido">
+            <h2>¿Qué es?</h2>
+            <!-- Aquí puedes agregar el contenido relacionado con la óptica --> <p>La óptica es una rama de la física que se encarga del estudio de la luz y su comportamiento. Se enfoca en cómo la luz se propaga, se refracta, se refleja, se dispersa y se comporta en diferentes medios y condiciones. Es una disciplina fundamental que tiene aplicaciones en diversos campos, como la tecnología, la medicina, la comunicación y la astronomía.
 
-<p id="result"></p>
+La luz es una forma de radiación electromagnética que es visible para el ojo humano. Se propaga en forma de ondas y partículas llamadas fotones. La óptica se ocupa de entender tanto el aspecto ondulatorio como el corpuscular de la luz, así como su interacción con la materia.
 
-<script>
-document.getElementById("lensForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-  var radius1 = parseFloat(document.getElementById("radius1").value);
-  var radius2 = parseFloat(document.getElementById("radius2").value);
-  var focalLength = 1 / ((1 / radius1) + (1 / radius2));
-  document.getElementById("result").innerText = "La distancia focal es: " + focalLength.toFixed(2) + " metros";
-});
-</script>
+Uno de los conceptos fundamentales en óptica es la reflexión, donde la luz rebota en una superficie. Esto es utilizado en la formación de imágenes en espejos y en la visión de objetos que no emiten luz propia. La refracción es otro fenómeno importante, donde la luz cambia de dirección al pasar de un medio a otro, como ocurre en la formación de imágenes por lentes.
 
+La óptica también abarca fenómenos como la dispersión, la difracción, la interferencia y la polarización de la luz. Estos fenómenos son fundamentales para entender cómo funciona la óptica en diferentes contextos, desde la formación de arcoíris hasta la fabricación de dispositivos ópticos avanzados.
+
+En la vida cotidiana, la óptica está presente en dispositivos como cámaras, microscopios, telescopios, lentes de contacto, fibra óptica y láseres. También tiene aplicaciones en áreas como la medicina, donde se utiliza en la cirugía láser y en técnicas de imagen como la tomografía de coherencia óptica.</p>
+<div class="imagen">
+    <img src="Optica.jpg" alt="Imagen representativa de la historia de la óptica">
+</div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Óptica - Todos los derechos reservados</p>
+    </footer>
 </body>
 </html>
