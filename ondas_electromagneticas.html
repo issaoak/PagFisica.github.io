@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ondas Electromagnéticas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f7ff; /* azul claro */
+            color: #333; /* gris oscuro */
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff; /* azul */
+            color: #fff; /* blanco */
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff; /* azul */
+            color: #fff; /* blanco */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* azul oscuro */
+        }
+
+        button:focus {
+            outline: none; /* Elimina el contorno al hacer clic */
+        }
+
+        button:active {
+            transform: translateY(1px); /* Efecto de pulsación */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Información sobre Ondas Electromagnéticas</h1>
+    </header>
+
+    <main>
+        <h2>Fórmulas</h2>
+        <p>La fórmula general de una onda electromagnética es:</p>
+        <p>c = f * λ</p>
+        <p>Donde:</p>
+        <ul>
+            <li>c es la velocidad de la luz en el vacío (m/s).</li>
+            <li>f es la frecuencia de la onda electromagnética (Hz).</li>
+            <li>λ es la longitud de onda de la onda electromagnética (m).</li>
+        </ul>
+
+        <p>Despejes:</p>
+        <ul>
+            <li>Frecuencia (f): \( f = \frac{c}{\lambda} \)</li>
+            <li>Longitud de Onda (λ): \( \lambda = \frac{c}{f} \)</li>
+        </ul>
+
+        <h2>Calcular Frecuencia y Longitud de Onda</h2>
+        <p>Ingrese la velocidad de la luz (m/s) y al menos una de las siguientes variables para calcular la otra:</p>
+        <label for="velocidadLuz">Velocidad de la Luz (m/s):</label>
+        <input type="number" id="velocidadLuz" value="300000000"><br><br>
+
+        <label for="frecuencia">Frecuencia (Hz):</label>
+        <input type="number" id="frecuencia"><br><br>
+
+        <label for="longitud">Longitud de Onda (m):</label>
+        <input type="number" id="longitud"><br><br>
+
+        <button onclick="calcularVariable('f')">Calcular Frecuencia (f)</button>
+        <button onclick="calcularVariable('λ')">Calcular Longitud de Onda (λ)</button><br><br>
+
+        <p id="resultado"></p>
+    </main>
+
+    <script>
+        // JavaScript para calcular la frecuencia y la longitud de onda
+        function calcularVariable(variable) {
+            const velocidadLuz = parseFloat(document.getElementById("velocidadLuz").value); // Velocidad de la luz en el vacío en m/s
+
+            if (variable === "f") {
+                const longitud = parseFloat(document.getElementById("longitud").value); // Longitud de onda ingresada por el usuario en m
+                const frecuenciaCalculada = velocidadLuz / longitud;
+                document.getElementById("resultado").textContent = "Frecuencia Calculada: " + frecuenciaCalculada.toFixed(2) + " Hz";
+            } else if (variable === "λ") {
+                const frecuencia = parseFloat(document.getElementById("frecuencia").value); // Frecuencia ingresada por el usuario en Hz
+                const longitudCalculada = velocidadLuz / frecuencia;
+                document.getElementById("resultado").textContent = "Longitud Calculada: " + longitudCalculada.toFixed(2) + " m";
+            }
+        }
+    </script>
+</body>
+</html>

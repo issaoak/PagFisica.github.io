@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispersión de la luz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f7ff; /* azul claro */
+            color: #333; /* gris oscuro */
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff; /* azul */
+            color: #fff; /* blanco */
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff; /* azul */
+            color: #fff; /* blanco */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* azul oscuro */
+        }
+
+        button:focus {
+            outline: none; /* Elimina el contorno al hacer clic */
+        }
+
+        button:active {
+            transform: translateY(1px); /* Efecto de pulsación */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dispersión de la luz</h1>
+    </header>
+
+    <main>
+        <p>La dispersión de la luz es un fenómeno en el que la luz blanca se descompone en sus colores componentes al pasar a través de un medio como un prisma o una gota de agua.</p>
+
+        <h2>Información</h2>
+        <p>La fórmula principal que describe la dispersión de la luz es la ley de dispersión de la luz de Rayleigh:</p>
+        <p> \( I = I_0 \frac{{1 + \cos^2(θ)}}{{2R^2}} \)</p>
+
+        <h2>Despejes de variables:</h2>
+        <ul>
+            <li>Despeje de la intensidad de la luz incidente (\(I_0\)): \( I_0 = \frac{{I \cdot 2R^2}}{{1 + \cos^2(θ)}} \)</li>
+            <li>Despeje del ángulo de dispersión (\(θ\)): \( θ = \arccos\left(\sqrt{\frac{{2R^2}}{{I \cdot I_0}} - 1}\right) \)</li>
+            <li>Despeje de la distancia desde el punto de dispersión hasta el observador (\(R\)): \( R = \sqrt{\frac{{I \cdot I_0}}{{2 \cdot I \cdot (1 + \cos^2(θ))}}} \)</li>
+        </ul>
+
+        <h2>Calculadora de dispersión de luz</h2>
+        <button onclick="despejar('I')">Despejar I<sub>0</sub></button>
+        <button onclick="despejar('θ')">Despejar θ</button>
+        <button onclick="despejar('R')">Despejar R</button>
+
+        <div id="variables"></div>
+
+        <button onclick="calcular()">Calcular</button>
+
+        <p>Resultado: <span id="resultado"></span></p>
+    </main>
+
+    <script>
+        var variableDespejada;
+
+        function despejar(variable) {
+            variableDespejada = variable;
+            var variablesDiv = document.getElementById('variables');
+            variablesDiv.innerHTML = '';
+
+            if (variable === 'I') {
+                variablesDiv.innerHTML += '<label for="intensidad">Intensidad de la luz incidente (I<sub>0</sub>):</label> <input type="number" id="intensidad">';
+            } else if (variable === 'θ') {
+                variablesDiv.innerHTML += '<label for="angulo">Ángulo de dispersión (θ):</label> <input type="number" id="angulo">';
+            } else if (variable === 'R') {
+                variablesDiv.innerHTML += '<label for="distancia">Distancia desde el punto de dispersión hasta el observador (R):</label> <input type="number" id="distancia">';
+            }
+        }
+
+        function calcular() {
+            var intensidad = parseFloat(document.getElementById('intensidad').value);
+            var angulo = parseFloat(document.getElementById('angulo').value);
+            var distancia = parseFloat(document.getElementById('distancia').value);
+
+            if (variableDespejada === 'I') {
+                var resultado = intensidad * (1 + Math.pow(Math.cos(angulo), 2)) / (2 * Math.pow(distancia, 2));
+            } else if (variableDespejada === 'θ') {
+                var resultado = Math.acos(Math.sqrt(2 * Math.pow(distancia, 2) / (intensidad * document.getElementById('intensidad').value) - 1));
+            } else if (variableDespejada === 'R') {
+                var resultado = Math.sqrt(intensidad * document.getElementById('intensidad').value / (2 * intensidad * (1 + Math.pow(Math.cos(angulo), 2))));
+            }
+
+            document.getElementById('resultado').textContent = resultado.toFixed(2);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reflexión y Refracción de la Luz</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f7ff; /* azul claro */
+      color: #333; /* gris oscuro */
+      margin: 0;
+      padding: 0;
+      min-height: 100vh; /* Asegura que el cuerpo ocupe al menos el 100% de la altura de la ventana del navegador */
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: #007bff; /* azul */
+      color: #fff; /* blanco */
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #0056b3; /* azul oscuro */
+      padding: 10px;
+      text-align: center;
+    }
+    nav button {
+      padding: 8px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #fff; /* blanco */
+      color: #333; /* gris oscuro */
+      margin: 5px;
+    }
+    main {
+      flex-grow: 1;
+      padding: 20px;
+      margin-bottom: 60px;
+    }
+    footer {
+      background-color: #007bff; /* azul */
+      color: #fff; /* blanco */
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+</style>
+</head>
+<body>
+
+    <header>
+      <h1>Reflexión y Refracción de la Luz</h1>
+    </header>
+    
+    <nav>
+      <button onclick="selectFormula('angulo_i')">Despejar θ<sub>i</sub></button>
+      <button onclick="selectFormula('angulo_r')">Despejar θ<sub>r</sub></button>
+      <button onclick="selectFormula('n1')">Despejar n<sub>1</sub></button>
+      <button onclick="selectFormula('n2')">Despejar n<sub>2</sub></button>
+    </nav>
+    
+    <main>
+      <p id="prompt"></p>
+      <input type="button" value="Resolver" onclick="openPrompt()">
+      
+      <p id="solution"></p>
+    
+      <h2>Definición:</h2>
+      <p>
+        La <strong>reflexión de la luz</strong> es el fenómeno por el cual la luz cambia de dirección al incidir sobre una superficie y vuelve al medio en el que se propagaba, sin cambiar de medio.
+        La <strong>refracción de la luz</strong> es el fenómeno por el cual la luz cambia de dirección al pasar de un medio a otro con diferente índice de refracción.
+      </p>
+    
+      <h2>Fórmulas:</h2>
+      <ul>
+        <li> Ley de Snell: n<sub>1</sub> sin(θ<sub>i</sub>) = n<sub>2</sub> sin(θ<sub>r</sub>) </li>
+        <li> Despeje para el ángulo de incidencia (θ<sub>i</sub>): θ<sub>i</sub> = arcsin((n<sub>2</sub> / n<sub>1</sub>) * sin(θ<sub>r</sub>)) </li>
+        <li> Despeje para el ángulo de refracción (θ<sub>r</sub>): θ<sub>r</sub> = arcsin((n<sub>1</sub> / n<sub>2</sub>) * sin(θ<sub>i</sub>)) </li>
+        <li> Despeje para el índice de refracción del medio incidente (n<sub>1</sub>): n<sub>1</sub> = (n<sub>2</sub> * sin(θ<sub>r</sub>)) / sin(θ<sub>i</sub>) </li>
+        <li> Despeje para el índice de refracción del medio refractado (n<sub>2</sub>): n<sub>2</sub> = (n<sub>1</sub> * sin(θ<sub>i</sub>)) / sin(θ<sub>r</sub>) </li>
+      </ul>
+    </main>
+    
+    <script>
+    var selectedFormula = "";
+    
+    function selectFormula(formula) {
+      selectedFormula = formula;
+    }
+    
+    function openPrompt() {
+      if (selectedFormula === "") {
+        alert("Por favor selecciona una fórmula antes de resolver el problema.");
+        return;
+      }
+      
+      var promptMessage = "";
+      
+      if (selectedFormula === "angulo_i") {
+        promptMessage = "Ingresa el valor de n2:";
+      } else if (selectedFormula === "angulo_r") {
+        promptMessage = "Ingresa el valor de n1:";
+      } else if (selectedFormula === "n1") {
+        promptMessage = "Ingresa el valor del ángulo de refracción (en grados):";
+      } else if (selectedFormula === "n2") {
+        promptMessage = "Ingresa el valor del ángulo de incidencia (en grados):";
+      }
+      
+      var value = prompt(promptMessage);
+      if (value !== null) {
+        solveProblem(value);
+      }
+    }
+    
+    function solveProblem(value) {
+      var solution = "";
+    
+      if (selectedFormula === "angulo_i") {
+        var n2 = parseFloat(value);
+        var n1 = parseFloat(document.getElementById("n1").value);
+        var theta_r = parseFloat(document.getElementById("theta_r").value);
+        var sin_theta_r = n2 / n1 * Math.sin(theta_r * Math.PI / 180); // Convertir a radianes
+        var theta_i = Math.asin(sin_theta_r) * 180 / Math.PI; // Convertir a grados
+        solution = "Ángulo de Incidencia (θ<sub>i</sub>): " + theta_i.toFixed(2) + " grados";
+      } else if (selectedFormula === "angulo_r") {
+        var n1 = parseFloat(value);
+        var n2 = parseFloat(document.getElementById("n2").value);
+        var theta_i = parseFloat(document.getElementById("theta_i").value);
+        var sin_theta_i = n1 / n2 * Math.sin(theta_i * Math.PI / 180); // Convertir a radianes
+        var theta_r = Math.asin(sin_theta_i) * 180 / Math.PI; // Convertir a grados
+        solution = "Ángulo de Refracción (θ<sub>r</sub>): " + theta_r.toFixed(2) + " grados";
+      } else if (selectedFormula === "n1") {
+        var theta_r = parseFloat(value);
+        var n2 = parseFloat(document.getElementById("n2").value);
+        var theta_i = parseFloat(document.getElementById("theta_i").value);
+        var sin_theta_r = Math.sin(theta_r * Math.PI / 180); // Convertir a radianes
+        var sin_theta_i = n2 / n1 * sin_theta_r;
+        var theta_i = Math.asin(sin_theta_i) * 180 / Math.PI; // Convertir a grados
+        var n1 = (n2 * sin_theta_r) / sin_theta_i;
+        solution = "Índice de refracción del medio incidente (n<sub>1</sub>): " + n1.toFixed(2);
+      } else if (selectedFormula === "n2") {
+        var theta_i = parseFloat(value);
+        var n1 = parseFloat(document.getElementById("n1").value);
+        var theta_r = parseFloat(document.getElementById("theta_r").value);
+        var sin_theta_i = Math.sin(theta_i * Math.PI / 180); // Convertir a radianes
+        var sin_theta_r = n1 / n2 * sin_theta_i;
+        var theta_r = Math.asin(sin_theta_r) * 180 / Math.PI; // Convertir a grados
+        var n2 = (n1 * sin_theta_i) / sin_theta_r;
+        solution = "Índice de refracción del medio refractado (n<sub>2</sub>): " + n2.toFixed(2);
+      }
+    
+      document.getElementById("solution").innerHTML = solution;
+    }
+    </script>
+    
+    </body>
+</html>

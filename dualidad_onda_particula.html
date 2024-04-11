@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dualidad Onda-Partícula</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f7ff;
+      /* azul claro */
+      color: #333;
+      /* gris oscuro */
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #007bff;
+      /* azul */
+      color: #fff;
+      /* blanco */
+      padding: 20px;
+      text-align: center;
+    }
+
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      /* azul */
+      color: #fff;
+      /* blanco */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+      /* azul oscuro */
+    }
+
+    button:focus {
+      outline: none;
+      /* Elimina el contorno al hacer clic */
+    }
+
+    button:active {
+      transform: translateY(1px);
+      /* Efecto de pulsación */
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Dualidad Onda-Partícula</h1>
+  </header>
+
+  <main>
+    <h2>Concepto y Significado:</h2>
+    <p>La dualidad onda-partícula sugiere que las partículas subatómicas pueden exhibir tanto propiedades de partícula
+      como propiedades de onda. Esto significa que, en ciertas situaciones, las partículas pueden comportarse como ondas
+      y viceversa.</p>
+
+    <h2>Fórmulas:</h2>
+    <ol>
+      <li>Relación de De Broglie: λ = h / p</li>
+      <li>Principio de Incertidumbre de Heisenberg: Δx * Δp ≥ ħ / 2</li>
+    </ol>
+
+    <h2>Resolver Problemas:</h2>
+    <button onclick="resolverProblema('deBroglie')">Relación de De Broglie (λ = h / p)</button>
+    <button onclick="resolverProblema('deBroglieDespeje')">Despeje de λ en función de h y p (λ = h / p)</button>
+    <button onclick="resolverProblema('heisenberg')">Principio de Incertidumbre de Heisenberg (Δx * Δp ≥ ħ / 2)</button>
+
+    <div id="inputFields">
+      <!-- Espacio para ingresar valores de variables -->
+    </div>
+
+    <div id="resultado">
+      <!-- Aquí se mostrará el resultado del problema -->
+    </div>
+  </main>
+
+  <script>
+    function resolverProblema(formula) {
+      var resultado = "";
+
+      if (formula === "deBroglie") {
+        var h = 6.62607015e-34; // Constante de Planck en m^2 kg / s
+        var p = parseFloat(prompt("Ingrese el momento (en kg·m/s):"));
+        var lambda = h / p; // Despeje de λ = h / p
+        resultado = "Longitud de onda (λ) = " + lambda.toFixed(10) + " metros";
+      } else if (formula === "deBroglieDespeje") {
+        resultado = "Despeje de λ en función de h y p: λ = h / p";
+      } else if (formula === "heisenberg") {
+        var hbar = 1.0545718e-34; // Constante reducida de Planck en m^2 kg / s
+        var incertidumbre = parseFloat(prompt("Ingrese la incertidumbre en la posición (en metros):")) *
+          parseFloat(prompt("Ingrese la incertidumbre en el momento (en kg·m/s):"));
+        var minimo = hbar / 2; // Lado derecho de la desigualdad de Heisenberg
+        if (incertidumbre >= minimo) {
+          resultado = "La relación cumple con el Principio de Incertidumbre de Heisenberg.";
+        } else {
+          resultado = "La relación no cumple con el Principio de Incertidumbre de Heisenberg.";
+        }
+      }
+
+      alert(resultado);
+    }
+  </script>
+
+</body>
+
+</html>
