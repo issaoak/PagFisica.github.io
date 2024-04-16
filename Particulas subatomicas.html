@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Energía de Partículas</title>
+</head>
+<body>
+    <h1>Calculadora de Energía de Partículas</h1>
+    <p>Ingrese los siguientes valores:</p>
+    <label for="masa">Masa de la partícula (kg):</label>
+    <input type="number" id="masa">
+    <button onclick="calcularEnergia()">Calcular Energía</button>
+    <p id="resultado"></p>
+
+    <script>
+        function calcularEnergia() {
+            // Obtener la masa ingresada por el usuario
+            var masa = parseFloat(document.getElementById('masa').value);
+            
+            // Definir la velocidad de la luz en metros por segundo (aproximadamente 3.00 x 10^8 m/s)
+            var velocidadLuz = 3.00 * Math.pow(10, 8);
+            
+            // Calcular la energía utilizando la ecuación de Einstein E=mc^2
+            var energia = masa * Math.pow(velocidadLuz, 2);
+            
+            // Mostrar el resultado
+            document.getElementById('resultado').innerHTML = "La energía de la partícula es de " + energia.toFixed(2) + " Joules.";
+        }
+    </script>
+</body>
+</html>

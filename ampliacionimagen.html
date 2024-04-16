@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Educación sobre Aumento en Óptica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #4682B4;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            margin: 20px;
+        }
+
+        h2 {
+            color: #4682B4;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        form input {
+            padding: 5px;
+            margin-bottom: 10px;
+            width: calc(100% - 10px);
+            box-sizing: border-box;
+        }
+
+        form button {
+            padding: 10px;
+            background-color: #4682B4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #3c5c9e;
+        }
+
+        #resultados {
+            margin-top: 20px;
+        }
+
+        #resultados p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Ampliación de una imagen</h1>
+    </header>
+
+    <main>
+        <h2>Óptica</h2>
+        <p>En la ciencia de la óptica, el aumento es la proporción entre la altura de la imagen observada y la altura del objeto original. El aumento se calcula con la ecuación:</p>
+        <p><code>M = (hi/ho) = -(di/do)</code></p>
+        <ul>
+            <li><code>M</code>: Aumento, indica cómo de grande o pequeña se ve la imagen en comparación con el objeto.</li>
+            <li><code>hi</code>: Altura de la imagen.</li>
+            <li><code>ho</code>: Altura del objeto.</li>
+            <li><code>di</code>: Distancia de la imagen desde la lente.</li>
+            <li><code>do</code>: Distancia del objeto desde la lente.</li>
+        </ul>
+        <p>Los valores de <code>M</code> y <code>di</code> se pueden calcular a partir de las fórmulas:</p>
+        <ul>
+            <li>Ecuación de la lente delgada: <code>1/f = 1/do + 1/di</code> donde <code>f</code> es la distancia focal de la lente.</li>
+            <li>Ecuación de aumento: <code>M = (hi/ho) = -(di/do)</code></li>
+        </ul>
+        <p>Al calcular el aumento:</p>
+        <ul>
+            <li>Si <code>M</code> es negativo, la imagen estará invertida (de cabeza).</li>
+            <li>Si el valor absoluto de <code>M</code> es mayor a 1, la imagen será más grande que el objeto.</li>
+            <li>Si el valor absoluto de <code>M</code> es menor a 1, la imagen será más pequeña que el objeto.</li>
+        </ul>
+        
+        <h3>Ingresar datos</h3>
+        <form id="form-optica">
+            <label for="altura-objeto">Altura del objeto (ho):</label>
+            <input type="number" id="altura-objeto" step="any" required>
+
+            <label for="distancia-objeto">Distancia del objeto a la lente (do):</label>
+            <input type="number" id="distancia-objeto" step="any" required>
+
+            <label for="distancia-focal">Distancia focal de la lente (f):</label>
+            <input type="number" id="distancia-focal" step="any" required>
+
+            <button type="button" onclick="calcularOptica()">Calcular</button>
+        </form>
+
+        <div id="resultados">
+            <h3>Resultados:</h3>
+            <p id="resultado-di">Distancia de la imagen (di):</p>
+            <p id="resultado-hi">Altura de la imagen (hi):</p>
+            <p id="resultado-M">Aumento (M):</p>
+        </div>
+    </main>
+
+    <script>
+        // Función para calcular los resultados de óptica
+        function calcularOptica() {
+            // Obtener los valores ingresados por el usuario
+            const ho = parseFloat(document.getElementById('altura-objeto').value);
+            const do_ = parseFloat(document.getElementById('distancia-objeto').value);
+            const f = parseFloat(document.getElementById('distancia-focal').value);
+
+            // Verificar que los valores ingresados sean válidos
+            if (isNaN(ho) || isNaN(do_) || isNaN(f)) {
+                alert("Por favor, ingrese valores válidos para la altura del objeto, la distancia del objeto y la distancia focal.");
+                return;
+            }
+
+            // Calcular la distancia de la imagen (di) usando la ecuación de la lente: 1/f = 1/do + 1/di
+            const di = (1 / f - 1 / do_);
+            if (di === 0) {
+                alert("La distancia focal y la distancia del objeto deben ser diferentes para obtener un valor válido de di.");
+                return;
+            }
+            const diResult = 1 / di;
+
+            // Calcular el aumento (M) usando la ecuación: M = -(di / do)
+            const M = -(diResult / do_);
+
+            // Calcular la altura de la imagen (hi) usando la ecuación: (hi / ho) = -(di / do)
+            const hi = -(diResult / do_) * ho;
+
+            // Mostrar los resultados
+            document.getElementById('resultado-di').textContent = `Distancia de la imagen (di): ${diResult.toFixed(2)} cm`;
+            document.getElementById('resultado-hi').textContent = `Altura de la imagen (hi): ${hi.toFixed(2)} cm`;
+            document.getElementById('resultado-M').textContent = `Aumento (M): ${M.toFixed(2)}`;
+        }
+    </script>
+</body>
+
+</html>
+
+

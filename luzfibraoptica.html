@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispositivos Iniciales y Luz de Fibras Ópticas</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Estilos específicos para la página sobre Dispositivos Iniciales y Luz de Fibras Ópticas */
+        #fiber-optic-info {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 20px;
+        }
+
+        #fiber-optic-info h2 {
+            color: black;
+        }
+
+        #fiber-optic-info p {
+            line-height: 1.6;
+        }
+
+        .imagen {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .imagen img {
+            width: 70%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Estilos para formularios de cálculo */
+        form {
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        form input {
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        form button {
+            padding: 10px;
+            background-color: #119c9c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #0b6464;
+        }
+
+        /* Estilos para los resultados de los cálculos */
+        #resultado-attenuation,
+        #resultado-bandwidth,
+        #resultado-loss {
+            font-weight: bold;
+            color: #008b8b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dispositivos Iniciales y Luz de Fibras Ópticas</h1>
+
+    <!-- Información sobre fibras ópticas -->
+    <div id="fiber-optic-info">
+        <p>Las fibras ópticas son medios de transmisión de luz que consisten en fibras muy delgadas hechas de vidrio o
+            plástico, capaces de transportar señales de luz a largas distancias con baja atenuación. Son ampliamente
+            utilizadas en la industria de las telecomunicaciones y otras aplicaciones, como en la transmisión de datos,
+            televisión por cable, medicina y más.</p>
+
+        <h2>Conceptos clave sobre fibras ópticas:</h2>
+        <ul>
+            <li><strong>Índice de refracción:</strong> Las fibras ópticas funcionan por medio de la reflexión interna
+                total, que ocurre debido a la diferencia de índice de refracción entre el núcleo y la cubierta de la
+                fibra.</li>
+            <li><strong>Modo de propagación:</strong> Existen fibras multimodo y monomodo, cada una con diferentes
+                características de propagación de la luz. Las fibras monomodo permiten una mayor distancia de
+                transmisión sin distorsión de la señal.</li>
+            <li><strong>Atenuación:</strong> La atenuación es la pérdida de intensidad de la luz a lo largo de la fibra.
+                Factores como el material de la fibra y la longitud de onda de la luz afectan la atenuación.</li>
+        </ul>
+
+        <h2>Tipos de fibras ópticas:</h2>
+        <ul>
+            <li><strong>Fibras multimodo:</strong> Permiten que la luz se propague en múltiples modos a través del
+                núcleo, lo que puede causar dispersión modal. Son adecuadas para distancias cortas y medianas.</li>
+            <li><strong>Fibras monomodo:</strong> Permiten que la luz se propague en un solo modo, reduciendo la
+                dispersión modal y permitiendo transmisiones a largas distancias.</li>
+        </ul>
+
+        <h2>Aplicaciones:</h2>
+        <ul>
+            <li>Telecomunicaciones: Transmisión de datos e internet de alta velocidad.</li>
+            <li>Medicina: Endoscopios de fibra óptica.</li>
+            <li>Iluminación: Sistemas de iluminación artística y ambiental.</li>
+            <li>Investigación científica: Experimentos de óptica y física cuántica.</li>
+        </ul>
+
+        <p>Las fibras ópticas continúan siendo una tecnología fundamental en muchas industrias, permitiendo avances
+            significativos en comunicaciones y aplicaciones médicas.</p>
+
+            <p>Aula. (2023, 15 mayo). Redes de Fibra Óptica: todo lo que necesitas saber. aula21 | Formación para la Industria. https://www.cursosaula21.com/que-son-las-redes-de-fibra-optica/</p>
+    </div>
+
+    <h2>Fórmulas sobre fibras ópticas:</h2>
+    <h3>Atenuación:</h3>
+    <p>La atenuación (<code>α</code>) mide la pérdida de señal a lo largo de la fibra. Se calcula en dB/km:</p>
+    <p><code>α = 10 * log10(Pi / Pout) / L</code></p>
+    <p>Donde:</p>
+    <ul>
+        <li><code>Pi</code> es la potencia de entrada en la fibra (en Watts).</li>
+        <li><code>Pout</code> es la potencia de salida de la fibra (en Watts).</li>
+        <li><code>L</code> es la longitud de la fibra (en kilómetros).</li>
+    </ul>
+
+    <form id="form-attenuation">
+        <label for="potencia-entrada">Ingresa la potencia de entrada (Pi) en Watts:</label>
+        <input type="number" id="potencia-entrada" step="any" required>
+        <label for="potencia-salida">Ingresa la potencia de salida (Pout) en Watts:</label>
+        <input type="number" id="potencia-salida" step="any" required>
+        <label for="longitud-fibra">Ingresa la longitud de la fibra (L) en kilómetros:</label>
+        <input type="number" id="longitud-fibra" step="any" required>
+        <button type="button" onclick="calcularAtenuacion()">Calcular atenuación</button>
+    </form>
+    <p id="resultado-attenuation"></p>
+
+    <h3>Ancho de banda:</h3>
+    <p>El ancho de banda de una fibra óptica depende de la dispersión y se mide en MHz·km:</p>
+    <p><code>Ancho de banda (MHz·km) = 1 / (τ * L)</code></p>
+    <p>Donde:</p>
+    <ul>
+        <li><code>τ</code> es la dispersión modal en segundos.</li>
+        <li><code>L</code> es la longitud de la fibra en kilómetros.</li>
+    </ul>
+
+    <form id="form-bandwidth">
+        <label for="disperion">Ingresa la dispersión modal (τ) en segundos:</label>
+        <input type="number" id="disperion" step="any" required>
+        <label for="longitud-fibra-bandwidth">Ingresa la longitud de la fibra (L) en kilómetros:</label>
+        <input type="number" id="longitud-fibra-bandwidth" step="any" required>
+        <button type="button" onclick="calcularAnchoBanda()">Calcular ancho de banda</button>
+    </form>
+    <p id="resultado-bandwidth"></p>
+
+    <h3>Pérdida de retorno:</h3>
+    <p>La pérdida de retorno (<code>LR</code>) mide la cantidad de luz que se refleja de vuelta en la fibra óptica:</p>
+    <p><code>LR = 10 * log10(Pi / Pback)</code></p>
+    <p>Donde:</p>
+    <ul>
+        <li><code>Pi</code> es la potencia de entrada en la fibra (en Watts).</li>
+        <li><code>Pback</code> es la potencia reflejada de la fibra (en Watts).</li>
+    </ul>
+
+    <form id="form-return-loss">
+        <label for="potencia-entrada-return">Ingresa la potencia de entrada (Pi) en Watts:</label>
+        <input type="number" id="potencia-entrada-return" step="any" required>
+        <label for="potencia-reflejada">Ingresa la potencia reflejada (Pback) en Watts:</label>
+        <input type="number" id="potencia-reflejada" step="any" required>
+        <button type="button" onclick="calcularPerdidaRetorno()">Calcular pérdida de retorno</button>
+    </form>
+    <p id="resultado-return-loss"></p>
+
+    <script>
+        // Cálculo de atenuación
+        function calcularAtenuacion() {
+            const Pi = parseFloat(document.getElementById('potencia-entrada').value);
+            const Pout = parseFloat(document.getElementById('potencia-salida').value);
+            const L = parseFloat(document.getElementById('longitud-fibra').value);
+
+            const atenuacion = 10 * Math.log10(Pi / Pout) / L;
+
+            document.getElementById('resultado-attenuation').textContent = `La atenuación es: ${atenuacion.toFixed(6)} dB/km.`;
+        }
+
+        // Cálculo de ancho de banda
+        function calcularAnchoBanda() {
+            const dispersion = parseFloat(document.getElementById('disperion').value);
+            const L = parseFloat(document.getElementById('longitud-fibra-bandwidth').value);
+
+            const anchoBanda = 1 / (dispersion * L);
+
+            document.getElementById('resultado-bandwidth').textContent = `El ancho de banda es: ${anchoBanda.toFixed(6)} MHz·km.`;
+        }
+
+        // Cálculo de pérdida de retorno
+        function calcularPerdidaRetorno() {
+            const Pi = parseFloat(document.getElementById('potencia-entrada-return').value);
+            const Pback = parseFloat(document.getElementById('potencia-reflejada').value);
+
+            const perdidaRetorno = 10 * Math.log10(Pi / Pback);
+
+            document.getElementById('resultado-return-loss').textContent = `La pérdida de retorno es: ${perdidaRetorno.toFixed(6)} dB.`;
+        }
+    </script>
+</body>
+
+</html>

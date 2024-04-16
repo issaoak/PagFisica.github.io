@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lentes Delgadas</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Estilos específicos para la página sobre las Lentes Delgadas en Óptica */
+        #lentes-info {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 20px;
+        }
+
+        #lentes-info h2 {
+            color: black;
+        }
+
+        #lentes-info p {
+            line-height: 1.6;
+        }
+
+        .imagen {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .imagen img {
+            width: 70%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Estilos para formularios de cálculo */
+        form {
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        form input {
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        form button {
+            padding: 10px;
+            background-color: #119c9c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #0b6464;
+        }
+
+        /* Estilos para los resultados de los cálculos */
+        #resultado-di,
+        #resultado-m {
+            font-weight: bold;
+            color: #008b8b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Lentes Delgadas</h1>
+
+    <!-- Información sobre las lentes delgadas -->
+    <div id="lentes-info">
+        <h2>Lentes delgadas</h2>
+        <p>Las lentes delgadas son dispositivos ópticos que se utilizan para enfocar, desviar o expandir la luz. Pueden
+            ser convergentes o divergentes, dependiendo de su forma y del material con el que estén hechas.</p>
+        <p>Las lentes convergentes (o positivas) son más anchas en el centro que en los bordes y se utilizan para
+            concentrar la luz en un punto. Las lentes divergentes (o negativas) son más anchas en los bordes que en el
+            centro y se utilizan para dispersar la luz.</p>
+        <p>En óptica, se utilizan ecuaciones para calcular la distancia de imagen, la distancia de objeto, el aumento, y
+            otras características de las lentes delgadas.</p>
+
+            <p>Fernández, J. L. (s. f.). Lentes delgadas. Fisicalab. https://www.fisicalab.com/apartado/lentes-delgadas</p>
+    </div>
+
+    <h3>Ecuación de la lente delgada:</h3>
+    <p>La ecuación de la lente delgada relaciona la distancia de objeto (<code>do</code>), la distancia de imagen
+        (<code>di</code>), y la distancia focal de la lente (<code>f</code>):</p>
+    <p><code>1/f = 1/do + 1/di</code></p>
+    <p>Donde:</p>
+    <ul>
+        <li><code>do</code>: Distancia desde el objeto a la lente.</li>
+        <li><code>di</code>: Distancia desde la lente a la imagen.</li>
+        <li><code>f</code>: Distancia focal de la lente.</li>
+    </ul>
+
+    <h3>Amplificación (aumento):</h3>
+    <p>El aumento (<code>M</code>) de una lente delgada se puede calcular de dos maneras:</p>
+    <ul>
+        <li><code>M = -(di / do)</code>: Relación entre la distancia de imagen y la distancia de objeto.</li>
+        <li><code>M = hi / ho</code>: Relación entre la altura de la imagen (<code>hi</code>) y la altura del objeto
+            (<code>ho</code>).</li>
+    </ul>
+
+    <h3>Cálculo de distancia de imagen y aumento:</h3>
+    <p>Utiliza los siguientes formularios para calcular la distancia de imagen y el aumento de una lente delgada.</p>
+
+    <!-- Formulario para calcular la distancia de imagen -->
+    <h4>Cálculo de distancia de imagen</h4>
+    <form id="form-di">
+        <label for="do">Ingresa la distancia de objeto (do) en metros:</label>
+        <input type="number" id="do" step="any" required>
+        <label for="f">Ingresa la distancia focal (f) en metros:</label>
+        <input type="number" id="f" step="any" required>
+        <button type="button" onclick="calcularDistanciaImagen()">Calcular distancia de imagen</button>
+    </form>
+    <p id="resultado-di"></p>
+
+    <!-- Formulario para calcular el aumento -->
+    <h4>Cálculo de aumento</h4>
+    <form id="form-m">
+        <label for="hi">Ingresa la altura de la imagen (hi) en metros:</label>
+        <input type="number" id="hi" step="any" required>
+        <label for="ho">Ingresa la altura del objeto (ho) en metros:</label>
+        <input type="number" id="ho" step="any" required>
+        <button type="button" onclick="calcularAumento()">Calcular aumento</button>
+    </form>
+    <p id="resultado-m"></p>
+
+    <script>
+        // Función para calcular la distancia de imagen
+        function calcularDistanciaImagen() {
+            const doValue = parseFloat(document.getElementById('do').value);
+            const fValue = parseFloat(document.getElementById('f').value);
+            
+            // Verifica que do y f sean diferentes de cero
+            if (doValue === 0 || fValue === 0) {
+                document.getElementById('resultado-di').textContent = 'Error: La distancia de objeto (do) y la distancia focal (f) deben ser distintas de cero.';
+                return;
+            }
+    
+            // Verifica que do y f no sean iguales para evitar división por cero
+            if (doValue === fValue) {
+                document.getElementById('resultado-di').textContent = 'Error: La distancia de objeto (do) y la distancia focal (f) no deben ser iguales.';
+                return;
+            }
+    
+            // Calcula la distancia de imagen usando la ecuación de la lente delgada
+            const diValue = 1 / ((1 / fValue) - (1 / doValue));
+    
+            // Muestra el resultado en su propio cuadro
+            document.getElementById('resultado-di').textContent = `La distancia de imagen es: ${diValue.toFixed(6)} metros.`;
+        }
+    
+        // Función para calcular el aumento
+        function calcularAumento() {
+            const hiValue = parseFloat(document.getElementById('hi').value);
+            const hoValue = parseFloat(document.getElementById('ho').value);
+            
+            // Verifica que ho no sea cero
+            if (hoValue === 0) {
+                document.getElementById('resultado-m').textContent = 'Error: La altura del objeto (ho) debe ser distinta de cero.';
+                return;
+            }
+    
+            // Calcula el aumento
+            const mValue = hiValue / hoValue;
+    
+            // Muestra el resultado en su propio cuadro
+            document.getElementById('resultado-m').textContent = `El aumento es: ${mValue.toFixed(6)}.`;
+        }
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Ángulo Crítico y Potencia Dióptrica</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f7ff; /* azul claro */
+      color: #333; /* gris oscuro */
+      margin: 0;
+      padding: 0;
+      min-height: 100vh; /* Asegura que el cuerpo ocupe al menos el 100% de la altura de la ventana del navegador */
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: #007bff; /* azul */
+      color: #fff; /* blanco */
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #0056b3; /* azul oscuro */
+      padding: 10px;
+      text-align: center;
+    }
+    nav select {
+      padding: 8px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #fff; /* blanco */
+      color: #333; /* gris oscuro */
+    }
+    nav select option {
+      font-size: 16px;
+    }
+    main {
+  flex-grow: 1;
+  padding: 20px;
+  margin-bottom: 100px; /* Ajusta el valor según sea necesario */
+}
+    footer {
+      background-color: #007bff; /* azul */
+      color: #fff; /* blanco */
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Calculadora de Ángulo Crítico y Potencia Dióptrica</h1>
+</header>
+
+<nav>
+  <label for="pageSelect">Selecciona la calculadora:</label>
+  <select id="pageSelect" onchange="showCalculator()">
+    <option value="angulo">Calculadora de Ángulo Crítico</option>
+    <option value="potencia">Calculadora de Potencia Dióptrica</option>
+  </select>
+</nav>
+
+<main id="anguloCalculator">
+  <h2>Calculadora de Ángulo Crítico</h2>
+
+  <label for="n1">Índice de refracción del primer medio (n1):</label>
+  <input type="number" id="n1" step="any" required><br>
+
+  <label for="n2">Índice de refracción del segundo medio (n2):</label>
+  <input type="number" id="n2" step="any" required><br>
+
+  <label for="variable">Selecciona la variable a despejar:</label>
+  <select id="variable">
+    <option value="theta">Ángulo crítico (θ<sub>c</sub>)</option>
+    <option value="n1">Índice de refracción del primer medio (n<sub>1</sub>)</option>
+    <option value="n2">Índice de refracción del segundo medio (n<sub>2</sub>)</option>
+  </select><br>
+
+  <button onclick="calculate()">Calcular Ángulo Crítico</button>
+
+  <div id="result"></div>
+
+  <div id="formula"></div>
+</main>
+
+<main id="potenciaCalculator" style="display: none;">
+  <h2>Calculadora de Potencia Dióptrica</h2>
+
+  <label for="inputValue">Valor:</label>
+  <input type="number" id="inputValue" step="any" required><br>
+
+  <label for="typeSelect">Selecciona el tipo de valor:</label>
+  <select id="typeSelect">
+    <option value="focalLength">Distancia focal (f)</option>
+    <option value="power">Potencia dióptrica (F)</option>
+  </select><br>
+
+  <button onclick="calculatePower()">Calcular Potencia Dióptrica</button>
+
+  <div id="powerResult"></div>
+
+  <div id="powerFormula"></div>
+</main>
+
+<footer>
+  <p>Hecht, E. (2021). Óptica (5ta ed.). Pearson Educación.</p>
+  <p>Pedrotti, F.L., Pedrotti, L.S., & Pedrotti, L.M. (2007). Introducción a la óptica (3ra ed.). Pearson Educación.</p>
+</footer>
+
+<script>
+function calculate() {
+  var n1 = parseFloat(document.getElementById('n1').value);
+  var n2 = parseFloat(document.getElementById('n2').value);
+  var selectedVariable = document.getElementById('variable').value;
+  var resultDiv = document.getElementById('result');
+  var formulaDiv = document.getElementById('formula');
+  
+  if (selectedVariable === "theta") {
+    var criticalAngle = Math.asin(Math.min(n2 / n1, 1)); // Asegura que el valor esté en el rango [-1, 1]
+    resultDiv.innerHTML = "<h3>Resultado:</h3>" +
+                          "<p>El ángulo crítico es: " + (criticalAngle * (180/Math.PI)).toFixed(2) + " grados.</p>";
+    formulaDiv.innerHTML = "<h3>Fórmula utilizada:</h3>" +
+                          "<p>θ<sub>c</sub> = arcsin(n<sub>2</sub> / n<sub>1</sub>)</p>" +
+                          "<p>Donde:</p>" +
+                          "<p>θ<sub>c</sub>: Ángulo crítico</p>" +
+                          "<p>n<sub>1</sub>: Índice de refracción del primer medio</p>" +
+                          "<p>n<sub>2</sub>: Índice de refracción del segundo medio</p>";
+  } else if (selectedVariable === "n1") {
+    var criticalAngle = Math.asin(Math.min(n2 / n1, 1));
+    resultDiv.innerHTML = "<h3>Resultado:</h3>" +
+                          "<p>El índice de refracción del primer medio es: " + (n2 / Math.sin(criticalAngle)).toFixed(2) + "</p>";
+    formulaDiv.innerHTML = "<h3>Fórmula utilizada:</h3>" +
+                          "<p>n<sub>1</sub> = n<sub>2</sub> / sin(θ<sub>c</sub>)</p>" +
+                          "<p>Donde:</p>" +
+                          "<p>n<sub>1</sub>: Índice de refracción del primer medio</p>" +
+                          "<p>n<sub>2</sub>: Índice de refracción del segundo medio</p>" +
+                          "<p>θ<sub>c</sub>: Ángulo crítico</p>";
+  } else if (selectedVariable === "n2") {
+    var criticalAngle = Math.asin(Math.min(n2 / n1, 1));
+    resultDiv.innerHTML = "<h3>Resultado:</h3>" +
+                          "<p>El índice de refracción del segundo medio es: " + (n1 * Math.sin(criticalAngle)).toFixed(2) + "</p>";
+    formulaDiv.innerHTML = "<h3>Fórmula utilizada:</h3>" +
+                          "<p>n<sub>2</sub> = n<sub>1</sub> * sin(θ<sub>c</sub>)</p>" +
+                          "<p>Donde:</p>" +
+                          "<p>n<sub>1</sub>: Índice de refracción del primer medio</p>" +
+                          "<p>n<sub>2</sub>: Índice de refracción del segundo medio</p>" +
+                          "<p>θ<sub>c</sub>: Ángulo crítico</p>";
+  }
+}
+
+function calculatePower() {
+  var inputValue = parseFloat(document.getElementById('inputValue').value);
+  var typeSelect = document.getElementById('typeSelect').value;
+  var resultDiv = document.getElementById('powerResult');
+  var formulaDiv = document.getElementById('powerFormula');
+  
+  if (typeSelect === "focalLength") {
+    var power = 1 / inputValue;
+    resultDiv.innerHTML = "<h3>Resultado:</h3>" +
+                          "<p>La potencia dióptrica correspondiente es: " + power.toFixed(2) + " dioptrías.</p>";
+    formulaDiv.innerHTML = "<h3>Fórmula utilizada:</h3>" +
+                          "<p>F = 1 / f</p>" +
+                          "<p>Donde:</p>" +
+                          "<p>F: Potencia dióptrica (en dioptrías)</p>" +
+                          "<p>f: Distancia focal (en metros)</p>";
+  } else if (typeSelect === "power") {
+    var focalLength = 1 / inputValue;
+    resultDiv.innerHTML = "<h3>Resultado:</h3>" +
+                          "<p>La distancia focal correspondiente es: " + focalLength.toFixed(2) + " metros.</p>";
+    formulaDiv.innerHTML = "<h3>Fórmula utilizada:</h3>" +
+                          "<p>F = 1 / f</p>" +
+                          "<p>Donde:</p>" +
+                          "<p>F: Potencia dióptrica (en dioptrías)</p>" +
+                          "<p>f: Distancia focal (en metros)</p>";
+  }
+}
+
+function showCalculator() {
+  var pageSelect = document.getElementById('pageSelect').value;
+  if (pageSelect === "angulo") {
+    document.getElementById('anguloCalculator').style.display = "block";
+    document.getElementById('potenciaCalculator').style.display = "none";
+  } else if (pageSelect === "potencia") {
+    document.getElementById('anguloCalculator').style.display = "none";
+    document.getElementById('potenciaCalculator').style.display = "block";
+  }
+}
+</script>
+
+</body>
+</html>

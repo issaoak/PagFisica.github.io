@@ -1,124 +1,151 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dualidad Onda-Partícula</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f7ff;
-      /* azul claro */
-      color: #333;
-      /* gris oscuro */
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dualidad Onda-Partícula</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f7ff;
+    /* azul claro */
+    color: #333;
+    /* gris oscuro */
+    margin: 0;
+    padding: 0;
+  }
 
-    header {
-      background-color: #007bff;
-      /* azul */
-      color: #fff;
-      /* blanco */
-      padding: 20px;
+  header {
+    background-color: #007bff;
+    /* azul */
+    color: #fff;
+    /* blanco */
+    padding: 20px;
+    text-align: center;
+  }
+
+  main {
+    padding: 20px;
+    text-align: center;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    /* azul */
+    color: #fff;
+    /* blanco */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+    /* azul oscuro */
+  }
+
+  button:focus {
+    outline: none;
+    /* Elimina el contorno al hacer clic */
+  }
+
+  button:active {
+    transform: translateY(1px);
+    /* Efecto de pulsación */
+
+  }
+  footer {
+      background-color: #007bff; /* azul */
+      color: #fff; /* blanco */
       text-align: center;
+      padding: 1px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
     }
-
     main {
-      padding: 20px;
-      text-align: center;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #007bff;
-      /* azul */
-      color: #fff;
-      /* blanco */
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-      /* azul oscuro */
-    }
-
-    button:focus {
-      outline: none;
-      /* Elimina el contorno al hacer clic */
-    }
-
-    button:active {
-      transform: translateY(1px);
-      /* Efecto de pulsación */
-    }
-  </style>
+  margin-bottom: 200px; /* Ajuste para dejar espacio para el footer */
+}
+</style>
 </head>
-
 <body>
 
-  <header>
-    <h1>Dualidad Onda-Partícula</h1>
-  </header>
+<header>
+  <h1>Dualidad Onda-Partícula</h1>
+</header>
 
-  <main>
-    <h2>Concepto y Significado:</h2>
-    <p>La dualidad onda-partícula sugiere que las partículas subatómicas pueden exhibir tanto propiedades de partícula
-      como propiedades de onda. Esto significa que, en ciertas situaciones, las partículas pueden comportarse como ondas
-      y viceversa.</p>
+<main>
+  <h2>Concepto y Significado:</h2>
+  <p>La dualidad onda-partícula sugiere que las partículas subatómicas pueden exhibir tanto propiedades de partícula (como masa y posición definida) como propiedades de onda (como interferencia y difracción). Esto significa que, en ciertas situaciones, las partículas pueden comportarse como ondas y viceversa.</p>
 
-    <h2>Fórmulas:</h2>
-    <ol>
-      <li>Relación de De Broglie: λ = h / p</li>
-      <li>Principio de Incertidumbre de Heisenberg: Δx * Δp ≥ ħ / 2</li>
-    </ol>
+  <h2>Personajes Principales:</h2>
+  <h3>Albert Einstein: </h3> <p> Propuso que la luz podía ser entendida como una colección de partículas discretas llamadas "fotones", en su famoso trabajo sobre el efecto fotoeléctrico, lo que contribuyó a la comprensión de la dualidad onda-partícula.</p>
+  <h3>Louis de Broglie: </h3> <p> En 1924, de Broglie propuso que si la luz, que originalmente se pensaba que era exclusivamente ondulatoria, podía comportarse como partículas (fotones), entonces las partículas como electrones podrían comportarse como ondas. Esta idea es conocida como la hipótesis de De Broglie.</p>
+  <h3>Erwin Schrödinger:</h3> <p> Desarrolló la ecuación de onda de Schrödinger, una ecuación fundamental en la teoría cuántica, que describe cómo las funciones de onda de las partículas cambian con el tiempo. Esta ecuación es esencial para entender el comportamiento de las partículas subatómicas en términos de ondas de probabilidad.</p>
+  <h2>Constantes y Símbolos de Medición:</h2>
+  <ul>
+    <li>ℎ - Constante de Planck: 6.62607015 × 10<sup>-34</sup> m<sup>2</sup>⋅kg/s</li>
+    <li>λ - Longitud de onda (en metros, m)</li>
+    <li>p - Momento (en kilogramos metros por segundo, kg·m/s)</li>
+  </ul>
 
-    <h2>Resolver Problemas:</h2>
-    <button onclick="resolverProblema('deBroglie')">Relación de De Broglie (λ = h / p)</button>
-    <button onclick="resolverProblema('deBroglieDespeje')">Despeje de λ en función de h y p (λ = h / p)</button>
-    <button onclick="resolverProblema('heisenberg')">Principio de Incertidumbre de Heisenberg (Δx * Δp ≥ ħ / 2)</button>
+ 
+  <p></p>
+  <p></p>
 
-    <div id="inputFields">
-      <!-- Espacio para ingresar valores de variables -->
-    </div>
+  <h2>Fórmulas:</h2>
+  <ol>
+    <li>Relación de De Broglie: λ = h / p</li>
+  </ol>
 
-    <div id="resultado">
-      <!-- Aquí se mostrará el resultado del problema -->
-    </div>
-  </main>
+  <h2>Resolver Problemas:</h2>
+  <button onclick="resolverProblema('deBroglie')">Resolver Problema de Longitud de Onda (λ)</button>
+  <button onclick="resolverProblema('momentumDespeje')">Despeje de p en función de h y λ (p = h / λ)</button>
+  
+  <div id="inputFields">
+    <!-- Espacio para ingresar valores de variables -->
+  </div>
 
-  <script>
-    function resolverProblema(formula) {
-      var resultado = "";
+  <div id="resultado">
+    <!-- Aquí se mostrará el resultado del problema -->
+  </div>
+</main>
 
-      if (formula === "deBroglie") {
-        var h = 6.62607015e-34; // Constante de Planck en m^2 kg / s
-        var p = parseFloat(prompt("Ingrese el momento (en kg·m/s):"));
-        var lambda = h / p; // Despeje de λ = h / p
-        resultado = "Longitud de onda (λ) = " + lambda.toFixed(10) + " metros";
-      } else if (formula === "deBroglieDespeje") {
-        resultado = "Despeje de λ en función de h y p: λ = h / p";
-      } else if (formula === "heisenberg") {
-        var hbar = 1.0545718e-34; // Constante reducida de Planck en m^2 kg / s
-        var incertidumbre = parseFloat(prompt("Ingrese la incertidumbre en la posición (en metros):")) *
-          parseFloat(prompt("Ingrese la incertidumbre en el momento (en kg·m/s):"));
-        var minimo = hbar / 2; // Lado derecho de la desigualdad de Heisenberg
-        if (incertidumbre >= minimo) {
-          resultado = "La relación cumple con el Principio de Incertidumbre de Heisenberg.";
-        } else {
-          resultado = "La relación no cumple con el Principio de Incertidumbre de Heisenberg.";
-        }
-      }
+<footer>
+  <h2>Bibliografía:</h2>
+  <ul>
+    <li>Einstein, A. (1905). "Sobre un punto de vista heurístico referente a la generación y transformación de la luz." Annalen der Physik, 17(6), 132-148.</li>
+    <li>de Broglie, L. (1924). "Investigaciones sobre la teoría de los cuantos." Annales de Physique, 3(10), 22-128.</li>
+    <li>Schrödinger, E. (1926). "Cuantización como problema de autovalores." Annalen der Physik, 79(4), 361-376.</li>
+  </ul>
+</footer>
 
-      alert(resultado);
-    }
-  </script>
+<script>
+function resolverProblema(formula) {
+  var resultado = "";
+  
+  if (formula === "deBroglie") {
+    var h = 6.62607015e-34; // Constante de Planck en m^2 kg / s
+    var p = parseFloat(prompt("Ingrese el momento (en kg·m/s):"));
+    var lambda = h / p; // Despeje de λ = h / p
+    resultado = "Longitud de onda (λ) = " + lambda.toFixed(10) + " metros\n";
+    resultado += "Constantes utilizadas:\n";
+    resultado += "Constante de Planck (h) = " + h + " m^2 kg / s";
+  } else if (formula === "momentumDespeje") {
+    var h = 6.62607015e-34; // Constante de Planck en m^2 kg / s
+    var lambda = parseFloat(prompt("Ingrese la longitud de onda (en metros):"));
+    var p = h / lambda; // Despeje de p = h / λ
+    resultado = "Momento (p) = " + p.toFixed(10) + " kilogramos metro por segundo (kg·m/s)\n";
+    resultado += "Constantes utilizadas:\n";
+    resultado += "Constante de Planck (h) = " + h + " m^2 kg / s";
+  }
+  
+  alert(resultado);
+}
+</script>
 
 </body>
-
 </html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fenómenos de Luminiscencia</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Estilos específicos para la página sobre Fenómenos de Luminiscencia */
+        #luminiscencia-info {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 20px;
+        }
+
+        #luminiscencia-info h2 {
+            color: black;
+        }
+
+        #luminiscencia-info p {
+            line-height: 1.6;
+        }
+
+        .imagen {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .imagen img {
+            width: 70%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Estilos para formularios de cálculo */
+        form {
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        form input {
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        form button {
+            padding: 10px;
+            background-color: #119c9c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #0b6464;
+        }
+
+        /* Estilos para los resultados de los cálculos */
+        #resultado-vida-media,
+        #resultado-emision,
+        #resultado-eficiencia {
+            font-weight: bold;
+            color: #008b8b;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Fenómenos de Luminiscencia</h1>
+    </header>
+
+    <main>
+        <!-- Información sobre luminiscencia -->
+        <div id="luminiscencia-info">
+            <p>La luminiscencia es un fenómeno que implica la emisión de luz por parte de un material cuando se excita
+                mediante diferentes métodos, como radiación, calor, reacciones químicas o estrés mecánico. A diferencia
+                de
+                la incandescencia, que es la emisión de luz por calentamiento, la luminiscencia ocurre a temperaturas
+                más
+                bajas. Existen varios tipos de luminiscencia, incluyendo:</p>
+
+            <h2>Tipos de luminiscencia:</h2>
+            <ul>
+                <li><strong>Fluorescencia:</strong> Ocurre cuando un material absorbe luz en una longitud de onda y
+                    emite
+                    luz en una longitud de onda diferente (generalmente mayor). El proceso es rápido, y la luz se emite
+                    inmediatamente después de la absorción.</li>
+                <li><strong>Fosforescencia:</strong> Es similar a la fluorescencia, pero la luz emitida dura más tiempo
+                    después de la absorción de la luz, debido a que los electrones quedan atrapados en estados de
+                    energía
+                    metastables.</li>
+                <li><strong>Quimioluminiscencia:</strong> Ocurre cuando una reacción química libera energía que se
+                    convierte
+                    en luz. Ejemplos incluyen reacciones de oxidación.</li>
+                <li><strong>Bioluminiscencia:</strong> Es una forma de quimioluminiscencia que ocurre en organismos
+                    vivos,
+                    como luciérnagas o medusas. La luz se produce a través de reacciones químicas controladas.</li>
+                <li><strong>Triboluminiscencia:</strong> Ocurre cuando un material emite luz al ser roto, aplastado o
+                    frotado. Es un fenómeno menos común.</li>
+            </ul>
+
+            <h2>Aplicaciones:</h2>
+            <ul>
+                <li>Fluorescencia: En medicina, se utiliza para diagnosticar enfermedades a través de la imagenología.
+                </li>
+                <li>Fosforescencia: Utilizada en pintura de seguridad, juguetes y productos decorativos.</li>
+                <li>Quimioluminiscencia: Empleada en análisis químicos, por ejemplo, en pruebas de laboratorio.</li>
+                <li>Bioluminiscencia: Investigación científica en biología marina.</li>
+                <li>Triboluminiscencia: Principalmente un fenómeno de investigación con posibles aplicaciones en
+                    sensores.</li>
+            </ul>
+
+            <p>La luminiscencia es un campo fascinante que abarca una variedad de fenómenos y aplicaciones en la ciencia
+                y la tecnología.</p>
+
+            <p>Faridy, P., García, A., Olivares Pèrez, Q., & Fuentes Tapia. (n.d.). “Conceptos y bibliografía sobre la
+                fotoluminiscencia y procesos similares” Realizado por. [Documento
+                PDF](https://inaoe.repositorioinstitucional.mx/jspui/bitstream/1009/1581/1/PanohayaGF.pdf)</p>
+        </div>
+
+        <h2>Fórmulas sobre luminiscencia:</h2>
+        <h3>Tiempo de vida media:</h3>
+        <p>El tiempo de vida media (<code>τ</code>) de un estado excitado es el tiempo promedio que un electrón
+            permanece en un estado de energía superior antes de regresar a su estado base:</p>
+        <p><code>τ = 1 / k</code></p>
+        <p>Donde <code>k</code> es la constante de decaimiento del estado excitado.</p>
+
+        <form id="form-vida-media">
+            <label for="constante-decaimiento">Ingresa la constante de decaimiento (k) en s<sup>-1</sup>: Ejemplo:
+                0.01</label>
+            <input type="number" id="constante-decaimiento" step="any" required>
+            <button type="button" onclick="calcularVidaMedia()">Calcular tiempo de vida media</button>
+        </form>
+        <p id="resultado-vida-media"></p>
+
+        <h3>Espectro de emisión:</h3>
+        <p>El espectro de emisión es el conjunto de longitudes de onda de la luz emitida por un material durante un
+            proceso de luminiscencia. Puede variar según el tipo de luminiscencia:</p>
+        <ul>
+            <li><strong>Fluorescencia:</strong> El espectro de emisión es generalmente estrecho y ocurre en una longitud
+                de onda mayor a la de la luz absorbida.</li>
+            <li><strong>Fosforescencia:</strong> El espectro de emisión puede abarcar un rango de longitudes de onda y
+                ocurrir más tarde que en el caso de la fluorescencia.</li>
+        </ul>
+
+        <form id="form-espectro-emision">
+            <label for="tipo-luminiscencia">Elige el tipo de luminiscencia:</label>
+            <select id="tipo-luminiscencia" required>
+                <option value="fluorescencia">Fluorescencia</option>
+                <option value="fosforescencia">Fosforescencia</option>
+            </select>
+            <button type="button" onclick="mostrarEspectroEmision()">Mostrar espectro de emisión</button>
+        </form>
+        <p id="resultado-emision"></p>
+
+        <h3>Eficiencia cuántica:</h3>
+        <p>La eficiencia cuántica de un proceso de luminiscencia es la relación entre la cantidad de fotones emitidos y
+            la cantidad de fotones absorbidos. Es un indicador de la eficiencia de la luminiscencia:</p>
+        <p><code>η<sub>cuántica</sub> = Fotones emitidos / Fotones absorbidos</code></p>
+
+        <form id="form-eficiencia-cuántica">
+            <label for="fotones-emitidos">Ingresa la cantidad de fotones emitidos: Ejemplo: 1000</label>
+            <input type="number" id="fotones-emitidos" step="any" required>
+
+            <label for="fotones-absorbidos">Ingresa la cantidad de fotones absorbidos: Ejemplo: 1500</label>
+            <input type="number" id="fotones-absorbidos" step="any" required>
+
+            <button type="button" onclick="calcularEficienciaCuantica()">Calcular eficiencia cuántica</button>
+        </form>
+        <p id="resultado-eficiencia"></p>
+    </main>
+
+    <script>
+        // Función para calcular el tiempo de vida media
+        function calcularVidaMedia() {
+            // Obtenemos el valor de k ingresado por el usuario
+            const k = parseFloat(document.getElementById('constante-decaimiento').value);
+
+            // Verificamos que k sea un número válido y positivo
+            if (isNaN(k) || k <= 0) {
+                document.getElementById('resultado-vida-media').textContent = "Por favor, ingresa un valor válido para k (constante de decaimiento).";
+                return;
+            }
+
+            // Calculamos el tiempo de vida media (τ)
+            const tau = 1 / k;
+
+            // Mostramos el resultado con 6 decimales de precisión
+            document.getElementById('resultado-vida-media').textContent = `El tiempo de vida media es: ${tau.toFixed(6)} segundos.`;
+        }
+
+        // Función para mostrar el espectro de emisión según el tipo de luminiscencia
+        function mostrarEspectroEmision() {
+            // Obtenemos el tipo de luminiscencia seleccionado por el usuario
+            const tipoLuminiscencia = document.getElementById('tipo-luminiscencia').value;
+
+            // Creamos un mensaje según el tipo de luminiscencia seleccionado
+            let mensaje = "";
+            if (tipoLuminiscencia === "fluorescencia") {
+                mensaje = "El espectro de emisión es generalmente estrecho y ocurre en una longitud de onda mayor a la de la luz absorbida.";
+            } else if (tipoLuminiscencia === "fosforescencia") {
+                mensaje = "El espectro de emisión puede abarcar un rango de longitudes de onda y ocurrir más tarde que en el caso de la fluorescencia.";
+            }
+
+            // Mostramos el mensaje en el elemento de resultado
+            document.getElementById('resultado-emision').textContent = mensaje;
+        }
+
+        // Función para calcular la eficiencia cuántica
+        function calcularEficienciaCuantica() {
+            // Obtenemos los valores de fotones emitidos y absorbidos ingresados por el usuario
+            const fotonesEmitidos = parseFloat(document.getElementById('fotones-emitidos').value);
+            const fotonesAbsorbidos = parseFloat(document.getElementById('fotones-absorbidos').value);
+
+            // Verificamos que ambos valores sean números válidos
+            if (isNaN(fotonesEmitidos) || isNaN(fotonesAbsorbidos)) {
+                document.getElementById('resultado-eficiencia').textContent = "Por favor, ingresa valores válidos para los fotones emitidos y absorbidos.";
+                return;
+            }
+
+            // Calculamos la eficiencia cuántica (η)
+            const eficienciaCuantica = fotonesEmitidos / fotonesAbsorbidos;
+
+            // Mostramos el resultado con 6 decimales de precisión
+            document.getElementById('resultado-eficiencia').textContent = `La eficiencia cuántica es: ${eficienciaCuantica.toFixed(6)}.`;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Física de Partículas</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* Estilos para la página sobre Física de Partículas */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Estilos específicos para la calculadora de energía */
+        .container {
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 20px;
+        }
+
+        .card h1, .card h2 {
+            color: black;
+        }
+
+        .imagen {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .imagen img {
+            width: 70%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Física de Partículas</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="acustica.html">Regresar</a></li>
+            <!-- Agrega más opciones de menú si es necesario -->
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="card">
+                <label for="temas">Selecciona un tema:</label>
+                <select id="temas">
+                    <option value="higgs">Bosón de Higgs</option>
+                    <option value="energia">Física de Altas Energías</option>
+                    <option value="materia_oscura">Materia Oscura y Energía Oscura</option>
+                </select>
+            </div>
+        
+            <div id="parametros" class="card">
+                <!-- Aquí se mostrarán los campos de entrada según el tema seleccionado -->
+            </div>
+        
+            <button onclick="calcular()">Calcular</button>
+        
+            <div id="resultado" class="card resultado"></div>
+
+            <h1>Calculadora de Energía de Partículas</h1>
+            <p>Ingrese los siguientes valores:</p>
+            <label for="masa">Masa de la partícula (kg):</label>
+            <input type="number" id="masa">
+            <button onclick="calcularEnergia()">Calcular Energía</button>
+            <p id="resultadoEnergia"></p>
+        
+            <h1>Calculadora de Incertidumbre Cuántica</h1>
+            <p>Ingrese los siguientes valores:</p>
+            <label for="masaIncertidumbre">Masa de la partícula (kg):</label>
+            <input type="number" id="masaIncertidumbre" step="any">
+            <label for="velocidad">Velocidad de la partícula (m/s):</label>
+            <input type="number" id="velocidadIncertidumbre" step="any">
+            <button onclick="calcularIncertidumbre()">Calcular Incertidumbre</button>
+            <div id="resultadoIncertidumbre"></div>
+
+            <h1>Calculadora de Dilatación del Tiempo</h1>
+            <p>Ingrese los siguientes valores:</p>
+            <label for="velocidadTiempo">Velocidad relativa (como fracción de la velocidad de la luz):</label>
+            <input type="number" id="velocidadTiempo" step="any">
+            <label for="tiempo">Tiempo en el marco de referencia del objeto en movimiento (segundos):</label>
+            <input type="number" id="tiempo">
+            <button onclick="calcularDilatacion()">Calcular Dilatación del Tiempo</button>
+            <p id="resultadoDilatacion"></p>
+
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 - Acústica - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function calcular() {
+            var tema = document.getElementById("temas").value;
+    
+            if (tema === "higgs") {
+                calcularBosonHiggs();
+            } else if (tema === "energia") {
+                calcularEnergia();
+            } else if (tema === "materia_oscura") {
+                calcularMateriaOscura();
+            }
+        }
+    
+        function calcularBosonHiggs() {
+            var energia = parseFloat(prompt("Ingresa la energía de la partícula (en GeV):"));
+            var masa = energia / 299792458; // Usando la relación E=mc^2
+            mostrarResultado("La masa de la partícula es: " + masa.toFixed(2) + " kg", "resultado");
+        }
+    
+        function calcularEnergia() {
+            // Obtener la masa ingresada por el usuario
+            var masa = parseFloat(document.getElementById('masa').value);
+            
+            // Definir la velocidad de la luz en metros por segundo (aproximadamente 3.00 x 10^8 m/s)
+            var velocidadLuz = 3.00 * Math.pow(10, 8);
+            
+            // Calcular la energía utilizando la ecuación de Einstein E=mc^2
+            var energia = masa * Math.pow(velocidadLuz, 2);
+            
+            // Mostrar el resultado
+            mostrarResultado("La energía de la partícula es de " + energia.toFixed(2) + " Joules", "resultadoEnergia");
+        }
+
+        function calcularIncertidumbre() {
+            var masa = parseFloat(document.getElementById('masaIncertidumbre').value);
+            var velocidad = parseFloat(document.getElementById('velocidadIncertidumbre').value);
+            var constantePlanckReducida = 1.0545718 * Math.pow(10, -34);
+            var incertidumbrePosicion = constantePlanckReducida / (masa * velocidad);
+            var incertidumbreMomento = constantePlanckReducida / (2 * Math.PI * incertidumbrePosicion);
+
+            var resultadoElement = document.getElementById('resultadoIncertidumbre');
+            resultadoElement.innerHTML = `
+                <p>La incertidumbre en la posición es de <strong>${incertidumbrePosicion.toExponential(2)} m</strong>.</p>
+                <p>La incertidumbre en el momento lineal es de <strong>${incertidumbreMomento.toExponential(2)} kg m/s</strong>.</p>
+            `;
+        }
+
+        function calcularDilatacion() {
+            // Obtener los valores ingresados por el usuario
+            var velocidad = parseFloat(document.getElementById('velocidadTiempo').value);
+            var tiempo = parseFloat(document.getElementById('tiempo').value);
+            
+            // Calcular la dilatación del tiempo usando la fórmula de la relatividad especial
+            var factorDilatacion = 1 / Math.sqrt(1 - Math.pow(velocidad, 2));
+            var tiempoDilatado = tiempo * factorDilatacion;
+            
+            // Mostrar el resultado
+            mostrarResultado("El tiempo dilatado es de " + tiempoDilatado.toFixed(2) + " segundos", "resultadoDilatacion");
+        }
+
+        function mostrarResultado(resultado, idElemento) {
+            document.getElementById(idElemento).innerHTML = "<p>" + resultado + "</p>";
+        }
+    </script>
+</body>
+</html>

@@ -1,72 +1,141 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luz Polarizada y No Polarizada</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f7ff; /* azul claro */
-            color: #333; /* gris oscuro */
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #007bff; /* azul */
-            color: #fff; /* blanco */
-            padding: 20px;
-            text-align: center;
-        }
-
-        main {
-            padding: 20px;
-            text-align: left;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff; /* azul */
-            color: #fff; /* blanco */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #0056b3; /* azul oscuro */
-        }
-
-        button:focus {
-            outline: none; /* Elimina el contorno al hacer clic */
-        }
-
-        button:active {
-            transform: translateY(1px); /* Efecto de pulsación */
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Luz Polarizada</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f7ff; /* azul claro */
+      color: #333; /* gris oscuro */
+      margin: 0;
+      padding: 0;
+      min-height: 100vh; /* Asegura que el cuerpo ocupe al menos el 100% de la altura de la ventana del navegador */
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: #007bff; /* azul */
+      color: #fff; /* blanco */
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #0056b3; /* azul oscuro */
+      padding: 10px;
+      text-align: center;
+    }
+    nav select {
+      padding: 8px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #fff; /* blanco */
+      color: #333; /* gris oscuro */
+    }
+    nav select option {
+      font-size: 16px;
+    }
+    main {
+      flex-grow: 1;
+      padding: 9px;
+      margin-bottom: 10px;
+    }
+    main2 {
+      flex-grow: 1;
+      padding: 150px;
+      margin-bottom: 10px;
+    }
+    footer {
+      background-color: #007bff; /* azul */
+      color: #fff; /* blanco */
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Información sobre Luz Polarizada y No Polarizada</h1>
-    </header>
+<header>
+<h1>Calculadora de Luz Polarizada</h1>
+</header>
 
-    <main>
-        <h2>Luz Polarizada</h2>
-        <p>La luz polarizada es aquella en la que las oscilaciones del campo eléctrico están confinadas a un plano particular.</p>
-        <p>Fórmula: \( I = I_0 \cdot \cos^2(\theta) \)</p>
-        <p>Variables:</p>
-        <ul>
-            <li><strong>I</strong>: Intensidad de la luz polarizada después de pasar por el polarizador.</li>
-            <li><strong>I<sub>0</sub></strong>: Intensidad inicial de la luz incidente.</li>
-            <li><strong>θ</strong>: Ángulo entre la dirección de polarización de la luz incidente y el eje de transmisión del polarizador.</li>
-        </ul>
+<main>
+<p>Por favor, introduce los siguientes valores (deja en blanco el valor que deseas calcular):</p>
 
-        <h2>Luz No Polarizada</h2>
-        <p>La luz no polarizada es aquella en la que las oscilaciones del campo eléctrico ocurren en todas las direcciones perpendiculares a la dirección de propagación.</p>
-    </main>
+<label for="intensidad">Intensidad de la luz polarizada (I):</label>
+<input type="number" id="intensidad" oninput="calcular()"><br><br>
+
+<label for="intensidad_inicial">Intensidad inicial de la luz incidente (I<sub>0</sub>):</label>
+<input type="number" id="intensidad_inicial" oninput="calcular()"><br><br>
+
+<label for="angulo">Ángulo entre la dirección de polarización y el eje de transmisión del polarizador (θ):</label>
+<input type="number" id="angulo" oninput="calcular()"><br><br>
+
+<p>Resultado:</p>
+<p>Intensidad de la luz polarizada después de pasar por el polarizador: <span id="resultado"></span> </p>
+<p>Intensidad inicial de la luz incidente (I<sub>0</sub>): <span id="resultado_I0"></span> </p>
+<p>Ángulo entre la dirección de polarización y el eje de transmisión del polarizador (θ): <span id="resultado_theta"></span> </p>
+<p id="info"></p>
+</main>
+<footer>
+<p> Young, H. D., & Freedman, R. A. (xxxx). Física universitaria con física moderna [Universitario]. (Edición). Editorial.</p>
+
+   <p> Hecht, E. (xxxx). Optics [Optica]. (Edición). Editorial.</p> 
+    
+    <p> Fowles, G. R. (xxxx). Introduction to Modern Optics [Introducción a la óptica moderna]. (Edición). Editorial.</p>
+</footer>
+
+<script>
+function calcular() {
+  var intensidad = parseFloat(document.getElementById("intensidad").value);
+  var intensidadInicial = parseFloat(document.getElementById("intensidad_inicial").value);
+  var angulo = parseFloat(document.getElementById("angulo").value);
+
+  if (!isNaN(intensidad) && !isNaN(intensidadInicial) && !isNaN(angulo)) {
+    var resultado = intensidadInicial * Math.cos(angulo * (Math.PI / 180))**2;
+    document.getElementById("resultado").textContent = resultado.toFixed(2);
+    document.getElementById("resultado_I0").textContent = intensidadInicial.toFixed(2);
+    document.getElementById("resultado_theta").textContent = angulo.toFixed(2) + "°";
+    document.getElementById("info").innerHTML = "Fórmula utilizada:<br>I = I<sub>0</sub> * cos<sup>2</sup>(θ)<br><br>I<sub>0</sub> = I / cos<sup>2</sup>(θ)<br><br>θ = arccos(√(I / I<sub>0</sub>))";
+  } else if (!isNaN(intensidad) && !isNaN(intensidadInicial)) {
+    var anguloRad = Math.acos(Math.sqrt(intensidad / intensidadInicial));
+    var anguloDeg = anguloRad * (180 / Math.PI);
+    document.getElementById("resultado").textContent = intensidad.toFixed(2);
+    document.getElementById("resultado_I0").textContent = intensidadInicial.toFixed(2);
+    document.getElementById("resultado_theta").textContent = anguloDeg.toFixed(2) + "°";
+    document.getElementById("info").innerHTML = "Fórmula utilizada:<br>θ = arccos(√(I / I<sub>0</sub>))<br><br>I = I<sub>0</sub> * cos<sup>2</sup>(θ)<br><br>I<sub>0</sub> = I / cos<sup>2</sup>(θ)";
+  } else if (!isNaN(intensidad) && !isNaN(angulo)) {
+    var intensidadInicialDespejada = intensidad / Math.cos(angulo * (Math.PI / 180))**2;
+    document.getElementById("resultado").textContent = intensidad.toFixed(2);
+    document.getElementById("resultado_I0").textContent = intensidadInicialDespejada.toFixed(2);
+    document.getElementById("resultado_theta").textContent = angulo.toFixed(2) + "°";
+    document.getElementById("info").innerHTML = "Fórmula utilizada:<br>I<sub>0</sub> = I / cos<sup>2</sup>(θ)<br><br>I = I<sub>0</sub> * cos<sup>2</sup>(θ)<br><br>θ = arccos(√(I / I<sub>0</sub>))";
+  } else if (!isNaN(intensidadInicial) && !isNaN(angulo)) {
+    var intensidadDespejada = intensidadInicial * Math.cos(angulo * (Math.PI / 180))**2;
+    document.getElementById("resultado").textContent = intensidadDespejada.toFixed(2);
+    document.getElementById("resultado_I0").textContent = intensidadInicial.toFixed(2);
+    document.getElementById("resultado_theta").textContent = angulo.toFixed(2) + "°";
+    document.getElementById("info").innerHTML = "Fórmula utilizada:<br>I = I<sub>0</sub> * cos<sup>2</sup>(θ)<br><br>θ = arccos(√(I / I<sub>0</sub>))<br><br>I<sub>0</sub> = I / cos<sup>2</sup>(θ)";
+  } else {
+    document.getElementById("resultado").textContent = "Por favor, introduce valores válidos en al menos dos campos.";
+    document.getElementById("resultado_I0").textContent = "";
+    document.getElementById("resultado_theta").textContent = "";
+    document.getElementById("info").textContent = "";
+  }
+}
+</script>
+<main2>
+<h2>Luz Polarizada:</h2>
+<h2>Definición</h2>
+<p> La luz polarizada es aquella en la que todas las ondas electromagnéticas vibran en la misma dirección. Esto significa que el campo eléctrico de cada onda está orientado en una dirección específica. </p>
+<h2>Luz No Polarizada:</h2>
+<h2>Definición: </h2>
+<p> La luz no polarizada es aquella en la que las ondas electromagnéticas vibran en todas las direcciones posibles perpendicular a la dirección de propagación. </p>
+</main2>
 </body>
 </html>

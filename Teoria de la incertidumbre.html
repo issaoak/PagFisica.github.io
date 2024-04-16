@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Incertidumbre Cuántica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Incertidumbre Cuántica</h1>
+        <label for="masa">Masa de la partícula (kg):</label>
+        <input type="number" id="masa" step="any">
+        <label for="velocidad">Velocidad de la partícula (m/s):</label>
+        <input type="number" id="velocidad" step="any">
+        <button onclick="calcularIncertidumbre()">Calcular Incertidumbre</button>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function calcularIncertidumbre() {
+            var masa = parseFloat(document.getElementById('masa').value);
+            var velocidad = parseFloat(document.getElementById('velocidad').value);
+            var constantePlanckReducida = 1.0545718 * Math.pow(10, -34);
+            var incertidumbrePosicion = constantePlanckReducida / (masa * velocidad);
+            var incertidumbreMomento = constantePlanckReducida / (2 * Math.PI * incertidumbrePosicion);
+
+            var resultadoElement = document.getElementById('resultado');
+            resultadoElement.innerHTML = `
+                <p>La incertidumbre en la posición es de <strong>${incertidumbrePosicion.toExponential(2)} m</strong>.</p>
+                <p>La incertidumbre en el momento lineal es de <strong>${incertidumbreMomento.toExponential(2)} kg m/s</strong>.</p>
+            `;
+        }
+    </script>
+</body>
+</html>

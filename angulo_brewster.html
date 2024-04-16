@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora del Ángulo de Brewster</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f7ff; /* azul claro */
+            color: #333; /* gris oscuro */
+            margin: 0;
+            padding: 0;
+            min-height: 100vh; /* Asegura que el cuerpo ocupe al menos el 100% de la altura de la ventana del navegador */
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background-color: #007bff; /* azul */
+            color: #fff; /* blanco */
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #0056b3; /* azul oscuro */
+            padding: 10px;
+            text-align: center;
+        }
+        nav select {
+            padding: 8px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #fff; /* blanco */
+            color: #333; /* gris oscuro */
+        }
+        nav select option {
+            font-size: 16px;
+        }
+        main {
+            flex-grow: 1;
+            padding: 20px;
+            margin-bottom: 60px;
+        }
+        footer {
+            background-color: #007bff; /* azul */
+            color: #fff; /* blanco */
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculadora del Ángulo de Brewster</h1>
+    </header>
+
+    <nav>
+        <label for="angleInput">Ingrese el ángulo de Brewster:</label>
+        <input type="number" id="angleInput">
+        <select id="unitSelect">
+            <option value="degrees">Grados</option>
+            <option value="radians">Radianes</option>
+        </select>
+    </nav>
+
+    <main>
+        <h2>Información</h2>
+        <p>El ángulo de Brewster es el ángulo de incidencia en el cual la luz polarizada perpendicularmente al plano de incidencia se refleja completamente, mientras que la luz polarizada paralela al plano de incidencia se transmite completamente.</p>
+        
+        <h2>Fórmula</h2>
+        <p>El ángulo de Brewster (\( \theta_B \)) se calcula mediante la fórmula:</p>
+        <math display="block">
+            <mrow>
+                <mi>θ</mi>
+                <mo>=</mo>
+                <mi>arctan</mi>
+                <mo stretchy="false">(</mo>
+                <mfrac>
+                    <mrow>
+                        <mi>n</mi>
+                        <sub>2</sub>
+                    </mrow>
+                    <mrow>
+                        <mi>n</mi>
+                        <sub>1</sub>
+                    </mrow>
+                </mfrac>
+                <mo stretchy="false">)</mo>
+            </mrow>
+        </math>
+
+        <h2>Despejes</h2>
+        <button onclick="seleccionarDespeje('n1')">Despeje de \( n_1 \)</button>
+        <button onclick="seleccionarDespeje('n2')">Despeje de \( n_2 \)</button>
+
+        <h2>Calculadora</h2>
+        <button onclick="calcularAngulo()">Calcular Ángulo de Brewster</button>
+        <h3>Resultado del Ángulo de Brewster</h3>
+        <p id="angleResult"></p>
+    </main>
+
+    <footer>
+        <p>OpenAI © 2024</p>
+    </footer>
+
+    <script>
+        var despejeSeleccionado = ''; // Variable global para almacenar el despeje seleccionado
+
+        function seleccionarDespeje(despeje) {
+            despejeSeleccionado = despeje;
+        }
+
+        function calcularIndices() {
+            var angle = parseFloat(document.getElementById("angleInput").value);
+            var unit = document.getElementById("unitSelect").value;
+            var thetaB;
+
+            if (unit === "degrees") {
+                thetaB = angle * Math.PI / 180; // Convertir a radianes
+            } else {
+                thetaB = angle;
+            }
+
+            var n1 = 1; // Por defecto, aire (índice de refracción ~ 1)
+            var n2 = Math.tan(thetaB);
+
+            if (despejeSeleccionado === 'n1') {
+                n1 = n2 / Math.tan(thetaB);
+            } else if (despejeSeleccionado === 'n2') {
+                n2 = n1 * Math.tan(thetaB);
+            }
+
+            var result = "Índice de refracción del medio incidente (n1): " + n1.toFixed(2) + "<br>";
+            result += "Índice de refracción del medio transmitido (n2): " + n2.toFixed(2);
+            document.getElementById("result").innerHTML = result;
+        }
+
+        function calcularAngulo() {
+            var n1 = parseFloat(prompt("Ingrese el índice de refracción del medio incidente (n1):"));
+            var n2 = parseFloat(prompt("Ingrese el índice de refracción del medio transmitido (n2):"));
+
+            if (!isNaN(n1) && !isNaN(n2)) {
+                var thetaB = Math.atan(n2 / n1);
+                var angleResult = "Ángulo de Brewster (θ<sub>B</sub>): " + (thetaB * 180 / Math.PI).toFixed(2) + " grados";
+                document.getElementById("angleResult").innerHTML = angleResult;
+            } else {
+                alert("Por favor, ingrese valores numéricos válidos para los índices de refracción.");
+            }
+        }
+    </script>
+</body>
+</html>

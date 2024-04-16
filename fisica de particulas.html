@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Física de Partículas</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Física de Partículas</h1>
+
+    <div class="card">
+        <label for="temas">Selecciona un tema:</label>
+        <select id="temas">
+            <option value="higgs">Bosón de Higgs</option>
+            <option value="energia">Física de Altas Energías</option>
+            <option value="materia_oscura">Materia Oscura y Energía Oscura</option>
+        </select>
+    </div>
+
+    <div id="parametros" class="card">
+        <!-- Aquí se mostrarán los campos de entrada según el tema seleccionado -->
+    </div>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div id="resultado" class="card resultado"></div>
+</div>
+
+<script>
+    function calcular() {
+        var tema = document.getElementById("temas").value;
+
+        if (tema === "higgs") {
+            calcularBosonHiggs();
+        } else if (tema === "energia") {
+            calcularEnergia();
+        } else if (tema === "materia_oscura") {
+            calcularMateriaOscura();
+        }
+    }
+
+    function calcularBosonHiggs() {
+        var energia = parseFloat(prompt("Ingresa la energía de la partícula (en GeV):"));
+        var masa = energia / 299792458; // Usando la relación E=mc^2
+        mostrarResultado("La masa de la partícula es: " + masa.toFixed(2) + " kg");
+    }
+
+    function calcularEnergia() {
+        var masa = parseFloat(prompt("Ingresa la masa de la partícula (en kg):"));
+        var velocidad = parseFloat(prompt("Ingresa la velocidad de la partícula (en m/s):"));
+        var energiaCinetica = 0.5 * masa * velocidad**2;
+        mostrarResultado("La energía cinética de la partícula es: " + energiaCinetica.toFixed(2) + " julios");
+    }
+
+    function calcularMateriaOscura() {
+        var densidadMateriaOscura = 0.27; // Valor aproximado
+        mostrarResultado("La densidad de energía de la materia oscura es aproximadamente: " + densidadMateriaOscura.toFixed(2));
+    }
+
+    function mostrarResultado(resultado) {
+        document.getElementById("resultado").innerHTML = "<p>" + resultado + "</p>";
+    }
+</script>
+
+</body>
+</html>

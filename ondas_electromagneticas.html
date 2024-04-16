@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ondas Electromagnéticas</title>
+    <title>Información sobre Ondas Electromagnéticas</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,6 +13,9 @@
             color: #333; /* gris oscuro */
             margin: 0;
             padding: 0;
+            min-height: 100vh; /* Asegura que el cuerpo ocupe al menos el 100% de la altura de la ventana del navegador */
+            display: flex;
+            flex-direction: column;
         }
 
         header {
@@ -20,89 +25,114 @@
             text-align: center;
         }
 
-        main {
-            padding: 20px;
+        nav {
+            background-color: #0056b3; /* azul oscuro */
+            padding: 10px;
             text-align: center;
         }
 
-        button {
-            padding: 10px 20px;
+        nav select {
+            padding: 8px;
             font-size: 16px;
-            background-color: #007bff; /* azul */
-            color: #fff; /* blanco */
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            background-color: #fff; /* blanco */
+            color: #333; /* gris oscuro */
         }
 
-        button:hover {
-            background-color: #0056b3; /* azul oscuro */
+        nav select option {
+            font-size: 16px;
         }
 
-        button:focus {
-            outline: none; /* Elimina el contorno al hacer clic */
+        main {
+            flex-grow: 1;
+            padding: 20px;
+            margin-bottom: 60px;
         }
 
-        button:active {
-            transform: translateY(1px); /* Efecto de pulsación */
+        footer {
+            background-color: #007bff; /* azul */
+            color: #fff; /* blanco */
+            text-align: center;
+            padding: 2px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Información sobre Ondas Electromagnéticas</h1>
-    </header>
+<header>
+    <h1>Información sobre Ondas Electromagnéticas</h1>
+</header>
 
-    <main>
-        <h2>Fórmulas</h2>
-        <p>La fórmula general de una onda electromagnética es:</p>
-        <p>c = f * λ</p>
-        <p>Donde:</p>
-        <ul>
-            <li>c es la velocidad de la luz en el vacío (m/s).</li>
-            <li>f es la frecuencia de la onda electromagnética (Hz).</li>
-            <li>λ es la longitud de onda de la onda electromagnética (m).</li>
-        </ul>
+<main>
+    <h2>Fórmulas</h2>
+    <p>La fórmula general de una onda electromagnética es:</p>
+    <p>c = f * λ</p>
+    <p>Donde:</p>
+    <ul>
+        <li>c es la velocidad de la luz en el vacío (m/s).</li>
+        <li>f es la frecuencia de la onda electromagnética (Hz).</li>
+        <li>λ es la longitud de onda de la onda electromagnética (m).</li>
+    </ul>
 
-        <p>Despejes:</p>
-        <ul>
-            <li>Frecuencia (f): \( f = \frac{c}{\lambda} \)</li>
-            <li>Longitud de Onda (λ): \( \lambda = \frac{c}{f} \)</li>
-        </ul>
+    <ul>
+        <li>Frecuencia (f): <span class="inline">\( f = \frac{c}{\lambda} \)</span></li>
+        <li>Longitud de Onda (λ): <span class="inline">\( \lambda = \frac{c}{f} \)</span></li>
+    </ul>
 
-        <h2>Calcular Frecuencia y Longitud de Onda</h2>
-        <p>Ingrese la velocidad de la luz (m/s) y al menos una de las siguientes variables para calcular la otra:</p>
-        <label for="velocidadLuz">Velocidad de la Luz (m/s):</label>
-        <input type="number" id="velocidadLuz" value="300000000"><br><br>
+    <h2>Calcular Frecuencia y Longitud de Onda</h2>
+    <p>Ingrese la velocidad de la luz (m/s) y al menos una de las siguientes variables para calcular la otra:</p>
+    <label for="velocidadLuz">Velocidad de la Luz (m/s):</label>
+    <input type="number" id="velocidadLuz" value="300000000"><br><br>
 
-        <label for="frecuencia">Frecuencia (Hz):</label>
-        <input type="number" id="frecuencia"><br><br>
+    <label for="frecuencia">Frecuencia (Hz):</label>
+    <input type="number" id="frecuencia"><br><br>
 
-        <label for="longitud">Longitud de Onda (m):</label>
-        <input type="number" id="longitud"><br><br>
+    <label for="longitud">Longitud de Onda (m):</label>
+    <input type="number" id="longitud"><br><br>
 
-        <button onclick="calcularVariable('f')">Calcular Frecuencia (f)</button>
-        <button onclick="calcularVariable('λ')">Calcular Longitud de Onda (λ)</button><br><br>
+    <button onclick="calcularVariable('f')">Calcular Frecuencia (f)</button>
+    <button onclick="calcularVariable('λ')">Calcular Longitud de Onda (λ)</button><br><br>
 
-        <p id="resultado"></p>
-    </main>
+    <p id="resultado"></p>
+</main>
 
-    <script>
-        // JavaScript para calcular la frecuencia y la longitud de onda
-        function calcularVariable(variable) {
-            const velocidadLuz = parseFloat(document.getElementById("velocidadLuz").value); // Velocidad de la luz en el vacío en m/s
+<footer>
+    <p>Páez, S. (2015). Electromagnetismo. Pearson Educación.</p>
+    <p>Sánchez Ron, J. M. (2003). Los pilares del mundo: Historia de la física en el siglo XX. Espasa-Calpe.</p>
+</footer>
 
-            if (variable === "f") {
-                const longitud = parseFloat(document.getElementById("longitud").value); // Longitud de onda ingresada por el usuario en m
-                const frecuenciaCalculada = velocidadLuz / longitud;
-                document.getElementById("resultado").textContent = "Frecuencia Calculada: " + frecuenciaCalculada.toFixed(2) + " Hz";
-            } else if (variable === "λ") {
-                const frecuencia = parseFloat(document.getElementById("frecuencia").value); // Frecuencia ingresada por el usuario en Hz
-                const longitudCalculada = velocidadLuz / frecuencia;
-                document.getElementById("resultado").textContent = "Longitud Calculada: " + longitudCalculada.toFixed(2) + " m";
-            }
+<script>
+    // JavaScript para calcular la frecuencia y la longitud de onda
+    function calcularVariable(variable) {
+        const velocidadLuz = parseFloat(document.getElementById("velocidadLuz").value); // Velocidad de la luz en el vacío en m/s
+
+        if (variable === "f") {
+            const longitud = parseFloat(document.getElementById("longitud").value); // Longitud de onda ingresada por el usuario en m
+            const frecuenciaCalculada = velocidadLuz / longitud;
+            document.getElementById("resultado").textContent = "Frecuencia Calculada: " + frecuenciaCalculada.toFixed(2) + " Hz";
+        } else if (variable === "λ") {
+            const frecuencia = parseFloat(document.getElementById("frecuencia").value); // Frecuencia ingresada por el usuario en Hz
+            const longitudCalculada = velocidadLuz / frecuencia;
+            document.getElementById("resultado").textContent = "Longitud Calculada: " + longitudCalculada.toFixed(2) + " m";
         }
-    </script>
+    }
+</script>
+<h2>Ondas Electromagnéticas:</h2>
+<h2>Definición</h2>
+<p>Las ondas electromagnéticas son un fenómeno fundamental en la física que consiste en la propagación de campos eléctricos y magnéticos a través del espacio.</p>
+<h2>Personajes Importantes:</h2>
+<h2>James Clerk Maxwell:</h2>
+<p>Fue un físico escocés del siglo XIX que formuló las ecuaciones de Maxwell, que describen el comportamiento de los campos eléctricos y magnéticos, y predijeron la existencia de ondas electromagnéticas.</p>
+<h2>Heinrich Hertz:</h2>
+<p>Fue un físico alemán que realizó experimentos en la década de 1880 que confirmaron experimentalmente la existencia de las ondas electromagnéticas, lo que llevó al desarrollo de la radio y otras tecnologías de comunicación inalámbrica.</p>
+<h2>Albert Einstein: </h2>
+<p>Su trabajo en la teoría de la relatividad ayudó a profundizar la comprensión de la naturaleza de la luz y su relación con el espacio y el tiempo.</p>
+<h2></h2>
+<p> Fue un inventor e ingeniero eléctrico que contribuyó significativamente al desarrollo de tecnologías relacionadas con el electromagnetismo, incluyendo la corriente alterna y la transmisión inalámbrica de energía.</p>
+
 </body>
 </html>

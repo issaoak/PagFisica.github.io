@@ -1,109 +1,131 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ondas Electromagnéticas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f7ff; /* azul claro */
-            color: #333; /* gris oscuro */
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #007bff; /* azul */
-            color: #fff; /* blanco */
-            padding: 20px;
-            text-align: center;
-        }
-
-        main {
-            padding: 20px;
-            text-align: center;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff; /* azul */
-            color: #fff; /* blanco */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #0056b3; /* azul oscuro */
-        }
-
-        button:focus {
-            outline: none; /* Elimina el contorno al hacer clic */
-        }
-
-        button:active {
-            transform: translateY(1px); /* Efecto de pulsación */
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espectro Electromagnético</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f7ff; /* azul claro */
+      color: #333; /* gris oscuro */
+      margin: 0;
+      padding: 0;
+      min-height: 100vh; /* Asegura que el cuerpo ocupe al menos el 100% de la altura de la ventana del navegador */
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: #007bff; /* azul */
+      color: #fff; /* blanco */
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #0056b3; /* azul oscuro */
+      padding: 10px;
+      text-align: center;
+    }
+    nav select {
+      padding: 8px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #fff; /* blanco */
+      color: #333; /* gris oscuro */
+    }
+    nav select option {
+      font-size: 16px;
+    }
+    main {
+      flex-grow: 1;
+      padding: 20px;
+      margin-bottom: 80px; /* Aumentado el margen inferior para dejar espacio al pie de página */
+    }
+    footer {
+      background-color: #007bff; /* azul */
+      color: #fff; /* blanco */
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 1; /* Para asegurarse de que el pie de página esté por encima del contenido */
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Información sobre Ondas Electromagnéticas</h1>
-    </header>
 
-    <main>
-        <h2>Fórmulas</h2>
-        <p>La fórmula general de una onda electromagnética es:</p>
-        <p>c = f * λ</p>
-        <p>Donde:</p>
-        <ul>
-            <li>c es la velocidad de la luz en el vacío (m/s).</li>
-            <li>f es la frecuencia de la onda electromagnética (Hz).</li>
-            <li>λ es la longitud de onda de la onda electromagnética (m).</li>
-        </ul>
+  <header>
+    <h1>Espectro Electromagnético</h1>
+  </header>
 
-        <h2>Despejes</h2>
-        <p>Despejes:</p>
-        <ul>
-            <li>Frecuencia (f): \( f = \frac{c}{\lambda} \)</li>
-            <li>Longitud de Onda (λ): \( \lambda = \frac{c}{f} \)</li>
-        </ul>
+  <nav>
+    <select id="opciones" onchange="resolverProblemaEspectroElectromagnetico()">
+      <option value="frecuencia">Calcular Frecuencia (f)</option>
+      <option value="longitud">Calcular Longitud de Onda (λ)</option>
+    </select>
+  </nav>
 
-        <h2>Calcular Frecuencia y Longitud de Onda</h2>
-        <p>Ingrese la velocidad de la luz (m/s) y al menos una de las siguientes variables para calcular la otra:</p>
-        <label for="velocidadLuz">Velocidad de la Luz (m/s):</label>
-        <input type="number" id="velocidadLuz" value="300000000"><br><br>
+  <main>
+    <p>El espectro electromagnético es el rango completo de todas las frecuencias de radiación electromagnética.</p>
+    <p>Ondas de radio: Esta región del espectro electromagnético tiene longitudes de onda más largas y frecuencias más bajas. Se utiliza ampliamente en la comunicación, como la radio AM y FM, las telecomunicaciones móviles y la transmisión de televisión.</p>
+    <p>Microondas: Las microondas tienen longitudes de onda más cortas y frecuencias más altas que las ondas de radio. Se utilizan en aplicaciones como la comunicación de datos inalámbrica, los hornos de microondas y la tecnología de radar.</p>
+    <p>Infrarrojo: El espectro infrarrojo abarca longitudes de onda más cortas que las microondas y se utilizan en aplicaciones como la visión nocturna, los controles remotos y la espectroscopia.</p>
+    <p>Luz visible: Esta es la parte del espectro electromagnético que los humanos pueden ver. La luz visible se extiende desde el rojo de longitud de onda más larga hasta el violeta de longitud de onda más corta.</p>
+    <p>Ultravioleta: El espectro ultravioleta tiene longitudes de onda más cortas que la luz visible y se utiliza en aplicaciones como la desinfección, la fototerapia y la detección de falsificaciones.</p>
+    <p>Rayos X: Los rayos X tienen longitudes de onda más cortas y energías más altas que la luz ultravioleta. Se utilizan en medicina para realizar radiografías y en aplicaciones de seguridad, como la inspección de equipaje en aeropuertos.</p>
+    <p>Rayos gamma: Esta es la región más energética del espectro electromagnético, con longitudes de onda extremadamente cortas y frecuencias muy altas. Se utilizan en medicina para la radioterapia y en la investigación científica para estudiar la estructura del núcleo atómico.</p>
 
-        <label for="frecuencia">Frecuencia (Hz):</label>
-        <input type="number" id="frecuencia"><br><br>
+    <p>La relación entre la velocidad de la luz (<em>c</em>) y la longitud de onda (<em>λ</em>) de una onda electromagnética está dada por la fórmula:</p>
+    <p>
+      <strong>c = f &times; λ</strong>
+    </p>
+    <p>Donde:</p>
+    <ul>
+      <li><em>c</em> es la velocidad de la luz en el vacío (m/s).</li>
+      <li><em>f</em> es la frecuencia de la onda (Hz).</li>
+      <li><em>λ</em> es la longitud de onda (m).</li>
+    </ul>
+    <button onclick="resolverProblemaEspectroElectromagnetico()">Resolver Problema de Espectro Electromagnético</button>
+  </main>
 
-        <label for="longitud">Longitud de Onda (m):</label>
-        <input type="number" id="longitud"><br><br>
+  <footer>
+    Bará T. J. (1999) Ondas electromagnéticas, Edicions de la Universitat Politècnica de Catalunya
+  </footer>
 
-        <button onclick="calcularVariable('f')">Calcular Frecuencia (f)</button>
-        <button onclick="calcularVariable('λ')">Calcular Longitud de Onda (λ)</button><br><br>
+  <script>
+    function resolverProblemaEspectroElectromagnetico() {
+      // Solicitar al usuario qué desea calcular
+      var opcion = prompt("¿Qué desea calcular?\n\n1. Frecuencia (f)\n2. Longitud de onda (λ)");
 
-        <p id="resultado"></p>
-    </main>
+      // Obtener la velocidad de la luz del usuario
+      var c = prompt("Ingrese la velocidad de la luz en el vacío (m/s):");
+      c = parseFloat(c); // Convertir a número flotante
 
-    <script>
-        // JavaScript para calcular la frecuencia y la longitud de onda
-        function calcularVariable(variable) {
-            const velocidadLuz = parseFloat(document.getElementById("velocidadLuz").value); // Velocidad de la luz en el vacío en m/s
+      // Calcular frecuencia (f)
+      if (opcion == "1") {
+        var lambda = prompt("Ingrese la longitud de onda (m):");
+        lambda = parseFloat(lambda); // Convertir a número flotante
+        var f = c / lambda;
+        alert("La frecuencia (f) es: " + f.toFixed(2) + " Hz");
+      }
 
-            if (variable === "f") {
-                const longitud = parseFloat(document.getElementById("longitud").value); // Longitud de onda ingresada por el usuario en m
-                const frecuenciaCalculada = velocidadLuz / longitud;
-                document.getElementById("resultado").textContent = "Frecuencia Calculada: " + frecuenciaCalculada.toFixed(2) + " Hz";
-            } else if (variable === "λ") {
-                const frecuencia = parseFloat(document.getElementById("frecuencia").value); // Frecuencia ingresada por el usuario en Hz
-                const longitudCalculada = velocidadLuz / frecuencia;
-                document.getElementById("resultado").textContent = "Longitud Calculada: " + longitudCalculada.toFixed(2) + " m";
-            }
-        }
-    </script>
+      // Calcular longitud de onda (λ)
+      else if (opcion == "2") {
+        var f = prompt("Ingrese la frecuencia (Hz):");
+        f = parseFloat(f); // Convertir a número flotante
+        var lambda = c / f;
+        alert("La longitud de onda (λ) es: " + lambda.toFixed(2) + " m");
+      }
+
+      // Opción inválida
+      else {
+        alert("Opción inválida");
+      }
+    }
+  </script>
+
 </body>
 </html>

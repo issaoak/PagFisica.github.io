@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Dilatación del Tiempo</title>
+</head>
+<body>
+    <h1>Calculadora de Dilatación del Tiempo</h1>
+    <p>Ingrese los siguientes valores:</p>
+    <label for="velocidad">Velocidad relativa (como fracción de la velocidad de la luz):</label>
+    <input type="number" id="velocidad" step="any">
+    <label for="tiempo">Tiempo en el marco de referencia del objeto en movimiento (segundos):</label>
+    <input type="number" id="tiempo">
+    <button onclick="calcularDilatacion()">Calcular Dilatación del Tiempo</button>
+    <p id="resultado"></p>
+
+    <script>
+        function calcularDilatacion() {
+            // Obtener los valores ingresados por el usuario
+            var velocidad = parseFloat(document.getElementById('velocidad').value);
+            var tiempo = parseFloat(document.getElementById('tiempo').value);
+            
+            // Calcular la dilatación del tiempo usando la fórmula de la relatividad especial
+            var factorDilatacion = 1 / Math.sqrt(1 - Math.pow(velocidad, 2));
+            var tiempoDilatado = tiempo * factorDilatacion;
+            
+            // Mostrar el resultado
+            document.getElementById('resultado').innerHTML = "El tiempo dilatado es de " + tiempoDilatado.toFixed(2) + " segundos.";
+        }
+    </script>
+</body>
+</html>
