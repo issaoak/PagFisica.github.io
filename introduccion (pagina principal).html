@@ -1,103 +1,146 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Introducción a la Óptica</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f7ff; /* azul claro */
-      color: #333; /* gris oscuro */
-      margin: 0;
-      padding: 0;
-      min-height: 100vh; /* Asegura que el cuerpo ocupe al menos el 100% de la altura de la ventana del navegador */
-      display: flex;
-      flex-direction: column;
-    }
-    header {
-      background-color: #007bff; /* azul */
-      color: #fff; /* blanco */
-      padding: 20px;
-      text-align: center;
-    }
-    nav {
-      background-color: #0056b3; /* azul oscuro */
-      padding: 10px;
-      text-align: center;
-    }
-    nav select {
-      padding: 8px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      background-color: #fff; /* blanco */
-      color: #333; /* gris oscuro */
-    }
-    nav select option {
-      font-size: 16px;
-    }
-    main {
-      flex-grow: 1;
-      padding: 20px;
-      margin-bottom: 60px;
-    }
-    footer {
-      background-color: #007bff; /* azul */
-      color: #fff; /* blanco */
-      text-align: center;
-      padding: 10px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Óptica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+
+        .menu-horizontal {
+            list-style: none;
+            display: flex;
+            justify-content: left;
+        }
+
+        .menu-horizontal > li > a {
+            display: block;
+            padding: 15px 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .menu-horizontal > li:hover {
+            background-color: #007374;
+        }
+
+        .menu-vertical {
+            position: absolute;
+            display: none;
+            list-style: none;
+            width: 200px;
+            background-color: rgba(0, 0, 0, .5);
+        }
+
+        .menu-horizontal li:hover .menu-vertical {
+            display: block;
+        }
+
+        .menu-vertical li:hover {
+            background-color: black;
+        }
+
+        .menu-vertical li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 15px 15px 20px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Otros estilos que puedas tener */
+
+        #contenido  {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 40px;
+            text-align: justify;
+            font-size: 20px;
+        }
+
+        .imagen {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .imagen img {
+            width: 70%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Óptica</h1>
+    </header>
 
-  <header>
-    <h1>Introducción a la Óptica</h1>
-    <h3>Realizado por: Mauricio Gael Aleman Sosa - Grupo: S-191 - Universidad Politécnica de Querétaro - Materia: Física para Ingeniería</h3>
-  </header>
+    <nav>
+        <ul class="menu-horizontal">
+            <li><a href="index.html">Inicio</a></li>
+            <li>
+                <a href="#">Temas</a>
+                <ul class="menu-vertical">
+                    <li><a href="Historia_optica.html">Historia de la Óptica</a></li>
+                    <li><a href="Conceptos_optica.html">Conceptos Básicos</a></li>
+                    <li><a href="Refraccion.html">Refracción</a></li>
+                    <li><a href="Reflexion.html">Reflexión</a></li>
+                    <li><a href="dispersion_luz.html">Dispersión de la luz</a></li>
+                    <li><a href="dualidad_onda_particula.html">Dualidad Onda-Partícula</a></li>
+                    <li><a href="Mirropt.html">Espejos</a></li>
+                    <li><a href="Ondopt.html">Óptica Ondulatoria</a></li>
+                    <li><a href="Fibrasopt.html">Fibras Ópticas</a></li>
+                    <li><a href="Holografia.html">Holografía</a></li>
+                    <li><a href="Interferencia.html">Interferencia</a></li>
+                    <li><a href="Difraccion.html">Difracción</a></li>
+                    <li><a href="Polarizacion.html">Polarización</a></li>
+                    <li><a href="Aplicaciones.html">Aplicaciones en la Vida Cotidiana</a></li>
+                    <li><a href="Avances.html">Avances Recientes</a></li>
+                </ul>
+            </li>
+           
+        </ul>
+    </nav>
 
-  <nav>
-    <select onchange="location = this.value;">
-      <option value="" selected disabled>Seleccione un tema...</option>
-      <option value="espectro_electromagnetico.html">Espectro Electromagnético</option>
-      <option value="dualidad_onda_particula.html">Dualidad Onda Partícula</option>
-      <option value="reflexion_refraccion_luz.html">Reflexión y Refracción de la Luz</option>
-      <option value="dispersion_luz.html">Dispersión de la Luz</option>
-      <option value="ondas_electromagneticas.html">Ondas Electromagnéticas</option>
-      <option value="luz_polarizada_no_polarizada.html">Luz Polarizada y No Polarizada</option>
-      <option value="angulo_critico_distancia_focal.html">Ángulo Crítico y Distancia Focal</option>
-      <option value="angulo_brewster.html">Ángulo de Brewster</option>
-      <option value="laseres.html">Láseres</option>
-      <option value="dispositivos_fibras_opticas.html">Dispositivos Iniciales y Luz de Fibras Ópticas</option>
-      <option value="fenomenos_luminiscencia.html">Fenómenos de Luminiscencia</option>
-      <option value="ampliacion_imagen.html">Ampliación de la Imagen</option>
-      <option value="lentes_delgados.html">Lentes Delgados</option>
-    </select>
-  </nav>
+    <main>
+        <section id="contenido">
+            <h2>¿Qué es?</h2>
+            <!-- Aquí puedes agregar el contenido relacionado con la óptica -->
+            <p>La óptica es una rama de la física que se encarga del estudio de la luz y su comportamiento. </p>
+        </section>
+    </main>
 
-  <main>
-    <h4>¿Que es la optica?</h4>
-    <p>La óptica es una rama fundamental de la física que se enfoca en el estudio de la luz y su comportamiento. Como estudiante de ingeniería, comprender los principios ópticos es esencial, ya que la óptica desempeña un papel crucial en una amplia gama de aplicaciones, desde la fabricación de lentes hasta la transmisión de datos a través de fibras ópticas.</p>
-    <h4>Definiciones y aplicaciones:</h4>
-    <p>La óptica se ocupa de cómo la luz se comporta y se propaga en diferentes medios, así como su interacción con objetos y sistemas ópticos. Sus aplicaciones son variadas e incluyen la construcción de instrumentos ópticos como microscopios, telescopios, cámaras y sistemas de imágenes médicas. Además, la óptica juega un papel clave en tecnologías modernas como la fibra óptica para comunicaciones, la holografía, la impresión 3D y la nanotecnología.</p>
-    <h4>Personajes Principales y sus Aportaciones:</h4>
-    <p>Algunos de los personajes más destacados en la historia de la óptica incluyen a:</p>
-
-        <h5>Isaac Newton:</h5> <p></p>Contribuyó significativamente al entendimiento de la óptica con su trabajo sobre la naturaleza corpuscular de la luz y la dispersión de la luz blanca a través de un prisma.</p>
-        
-        <h5>Christiaan Huygens:</h5> <p>Propuso la teoría ondulatoria de la luz, que compitió con la teoría corpuscular de Newton. Además, desarrolló el principio de Huygens, que describe la propagación de las ondas luminosas.</p>
-        
-        <h5>James Clerk Maxwell:</h5> <p>Formuló las ecuaciones de Maxwell, que unificaron la electricidad, el magnetismo y la óptica en una sola teoría electromagnética. Esto sentó las bases para entender la luz como una forma de radiación electromagnética.</p>
-  </main>
-
-  <footer>
-    <p>© 2024 Mauricio Gael Aleman Sosa - Universidad Politécnica de Querétaro</p>
-  </footer>
-
+    <footer>
+        <p>© 2024 Mauricio Gael Aleman Sosa - Universidad Politécnica de Querétaro</p>
+    </footer>
 </body>
 </html>

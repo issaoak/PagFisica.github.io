@@ -163,6 +163,9 @@
             var t = parseFloat(document.getElementById('tiempo').value);
             var ϕ = parseFloat(document.getElementById('fase').value);
 
+            // Convertir ϕ de grados a radianes
+            ϕ = ϕ * Math.PI / 180;
+
             // Calcular el resultado
             var resultado = A * Math.sin(k * x - ω * t + ϕ);
 

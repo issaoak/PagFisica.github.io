@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Sonido y Movimiento Ondulatorio</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #008b8b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #119c9c;
+            padding: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #0b6464;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        section {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 20px;
+            border-radius: 8px;
+            width: auto;
+        }
+        input[type="number"],
+        button {
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #008b8b;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+            display: block;
+        }
+        .resultado {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculadora de Sonido y Movimiento Ondulatorio</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="acustica.html">Regresar</a></li>
+            
+            <!-- Agrega más opciones de menú si es necesario -->
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Fórmula de la velocidad del sonido</h2>
+            <p>La velocidad del sonido en un medio material se puede calcular utilizando la siguiente fórmula:</p>
+            <p style="text-align: center;">\(v = \sqrt{\frac{B}{\rho}}\)</p>
+            <label for="variable1">Resolver para:</label>
+            <select id="variable1" onchange="actualizarVariables()">
+                <option value="velocidad">Velocidad del sonido (\(v\))</option>
+                <option value="modulo">Módulo Volumétrico (\(B\))</option>
+                <option value="densidad">Densidad (\(\rho\))</option>
+            </select><br>
+            <label id="valor1-label" for="valor1">Valor 1:</label>
+            <input type="number" id="valor1" step="any">
+            <span id="valor1-unidad"></span><br>
+            <label id="valor2-label" for="valor2">Valor 2:</label>
+            <input type="number" id="valor2" step="any">
+            <span id="valor2-unidad"></span><br>
+            <button onclick="calcular()">Calcular</button>
+            <div id="resultado1" class="resultado"></div>
+        </section>
+
+        <section>
+            <h2>Fórmula del Movimiento Ondulatorio</h2>
+            <p>El movimiento ondulatorio se puede describir mediante la siguiente ecuación:</p>
+            <p style="text-align: center;">\(y(x,t) = A \cdot \sin(kx - \omega t + \phi)\)</p>
+            <label for="amplitud">Amplitud (A):</label>
+            <input type="number" id="amplitud">
+            <span id="amplitud-unidad">(m)</span><br>
+            <label for="numero_onda">Número de onda (k):</label>
+            <input type="number" id="numero_onda">
+            <span id="numero_onda-unidad">(rad/m)</span><br>
+            <label for="frecuencia_angular">Frecuencia angular (\(\omega\)): </label>
+            <input type="number" id="frecuencia_angular">
+            <span id="frecuencia_angular-unidad">(rad/s)</span><br>
+            <label for="posicion">Posición (x):</label>
+            <input type="number" id="posicion">
+            <span id="posicion-unidad">(m)</span><br>
+            <label for="tiempo">Tiempo (t):</label>
+            <input type="number" id="tiempo">
+            <span id="tiempo-unidad">(s)</span><br>
+            <label for="fase">Fase (\(\phi\)): </label>
+            <input type="number" id="fase">
+            <span id="fase-unidad">(rad)</span><br>
+            <label for="resultado">Resultado:</label>
+            <span id="resultado2" class="resultado"></span><br>
+            <button onclick="calcularMovimientoOndulatorio()">Calcular</button>
+        </section>
+
+        <section>
+            <h2>Fórmula del Movimiento Armónico Simple (MAS)</h2>
+            <p>La ecuación del MAS es \(x(t) = A \cos(\omega t + \phi)\), donde \(A\) es la amplitud, \(\omega\) es la frecuencia angular y \(\phi\) es la fase inicial.</p>
+            <form id="mas-form">
+                <label for="amplitud">Amplitud (A):</label>
+                <input type="number" id="amplitud" name="amplitud" required>
+                <span id="amplitud-unidad">(m)</span><br>
+                <label for="frecuencia">Frecuencia angular (\(\omega\)):</label>
+                <input type="number" id="frecuencia" name="frecuencia" required>
+                <span id="frecuencia-unidad">(rad/s)</span><br>
+                <label for="fase">Fase inicial (\(\phi\)):</label>
+                <input type="number" id="fase" name="fase" required>
+                <span id="fase-unidad">(rad)</span><br>
+                <label for="tiempo">Tiempo (t):</label>
+                <input type="number" id="tiempo" name="tiempo" required>
+                <span id="tiempo-unidad">(s)</span><br>
+                <button type="button" onclick="calcularMAS()">Calcular</button>
+            </form>
+            <div id="resultado" class="resultado"></div>
+        </section>
+
+        <section>
+            <h2>Fórmula del Movimiento Periódico</h2>
+            <p>La fórmula del movimiento periódico es:</p>
+            <p style="text-align: center;">\(f(t+T) = f(t)\)</p>
+            <p>Donde:</p>
+            <ul>
+                <li>\(f(t+T)\) es el valor de la función en un tiempo \(t\) más el período \(T\).</li>
+                <li>\(f(t)\) es el valor de la función en un tiempo \(t\).</li>
+                <li>\(T\) es el período del movimiento.</li>
+            </ul>
+            <label for="valorInicial">Valor inicial \(f(t)\) (m):</label>
+            <input type="number" id="valorInicial"><br><br>
+            <label for="periodo">Período \(T\) (s):</label>
+            <input type="number" id="periodo"><br><br>
+            <label for="tiempo">Tiempo \(t\) (s):</label>
+            <input type="number" id="tiempo"><br><br>
+            <button onclick="calcularValor()">Calcular \(f(t+T)\)</button><br><br>
+            <div id="resultado"></div>
+        </section>
+
+        <section id="leyDeHooke">
+            <h2>Fórmula de la Ley de Hooke</h2>
+            <p>La Ley de Hooke describe el comportamiento elástico de un cuerpo. La fuerza (\(F\)) necesaria para estirar o comprimir un resorte está dada por la siguiente fórmula:</p>
+            <p style="text-align: center;">\(F = -kx\)</p>
+            <p>Donde:</p>
+            <ul>
+                <li>\(F\) es la fuerza aplicada (<span id="fuerza-unidad">en newtons</span>).</li>
+                <li>\(k\) es la constante del resorte (<span id="constante-unidad">en newtons por metro</span>).</li>
+                <li>\(x\) es la deformación (<span id="deformacion-unidad">en metros</span>).</li>
+            </ul>
+            <p>Ingrese los valores para resolver la fórmula:</p>
+            <label for="kInput">Constante del resorte (\(k\)): </label>
+            <input type="number" id="kInput"><span id="kInput-unidad"> (N/m)</span><br><br>
+            <label for="xInput">Deformación (\(x\)): </label>
+            <input type="number" id="xInput"><span id="xInput-unidad"> (m)</span><br><br>
+            <label for="fInput">Fuerza resultante (\(F\)): </label>
+            <input type="number" id="fInput" readonly><span id="fInput-unidad"> (N)</span><br><br>
+            <button onclick="calcularFuerza()">Calcular</button>
+        </section>
+
+        <section id="calculo-esfuerzo">
+            <h2>Fórmula del esfuerzo</h2>
+            <p>La fórmula del esfuerzo se expresa como:</p>
+            <p style="text-align: center;">\(\sigma = \frac{F}{A}\)</p>
+            <p>Donde:</p>
+            <ul>
+                <li>\(\sigma\) es el esfuerzo (en unidades de presión, por ejemplo, Pascales).</li>
+                <li>\(F\) es la fuerza aplicada (en unidades de fuerza, por ejemplo, Newtons).</li>
+                <li>\(A\) es el área sobre la que se aplica la fuerza (en unidades de área, por ejemplo, metros cuadrados).</li>
+            </ul>
+            <label for="fuerza">Fuerza (N):</label>
+            <input type="number" id="fuerza">
+            <br>
+            <label for="area">Área (m<sup>2</sup>):</label>
+            <input type="number" id="area">
+            <br>
+            <button onclick="calcularEsfuerzo()">Calcular</button>
+            <p id="resultadoEsfuerzo" class="resultado"></p>
+        </section>
+
+        <section>
+            <h2>Calculadora de Deformación</h2>
+            <form id="deformacionForm">
+                <label for="constanteElasticidad">Constante de elasticidad (k):</label>
+                <input type="number" id="constanteElasticidad" name="constanteElasticidad" required>
+                <span id="constanteElasticidad-unidad">(N/m)</span><br>
+                <label for="fuerzaAplicada">Fuerza aplicada (F):</label>
+                <input type="number" id="fuerzaAplicada" name="fuerzaAplicada" required>
+                <span id="fuerzaAplicada-unidad">(N)</span><br>
+                <label for="deformacionResultado">Deformación (x):</label>
+                <input type="number" id="deformacionResultado" name="deformacionResultado" readonly>
+                <span id="deformacionResultado-unidad">(m)</span><br>
+                <button type="button" onclick="calcularDeformacion()">Calcular</button>
+            </form>
+            <div class="formula">La fórmula de la deformación es: \( x = \frac{F}{k} \)</div>
+        </section>
+        <section>
+            <h2>Ley Inverso del Cuadrado para la Intensidad</h2>
+            <p>La ley del inverso del cuadrado establece que la intensidad (\(I\)) de una onda disminuye con el cuadrado de la distancia (\(r\)) desde la fuente.</p>
+            <p>La fórmula para calcular la intensidad es:</p>
+            <p style="text-align: center;">\(I = \frac{P}{4\pi r^2}\)</p>
+            <label for="potencia">Potencia de la fuente (P) (<i> w</i>):</label>
+            <input type="number" id="potencia"><br><br>
+            <label for="distancia">Distancia desde la fuente (r) (<i> m</i>):</label>
+            <input type="number" id="distancia"><br><br>
+            <button onclick="calcularIntensidad()">Calcular</button><br><br>
+            <div id="resultadoIntensidad"></div>
+        </section>
+        <section id="vibracionColumnasAire">
+            <h2>Vibración en Columnas de Aire</h2>
+            <p>La vibración en columnas de aire se puede calcular utilizando la siguiente fórmula:</p>
+            <p style="text-align: center;">\(f = \frac{v}{2L}\)</p>
+            <label for="velocidadCA">Velocidad del sonido (v) (m/s):</label>
+            <input type="number" id="velocidadCA"><br><br>
+            <label for="longitudCA">Longitud de la columna de aire (L) (m):</label>
+            <input type="number" id="longitudCA"><br><br>
+            <button onclick="calcularFrecuenciaCA()">Calcular</button><br><br>
+            <div id="resultadoCA"></div>
+            
+        </section>
+        <section>
+            <section>
+                <h2>Calculadora de Energía de Movimiento Ondulatorio</h2>
+                <form id="formularioEnergia">
+                    <label for="amplitudEnergia">Amplitud (A) (m):</label>
+                    <input type="number" id="amplitudEnergia" step="any" required><br><br>
+                
+                    <label for="constanteEnergia">Constante k (N/m):</label>
+                    <input type="number" id="constanteEnergia" step="any" required><br><br>
+                
+                    <button type="button" onclick="calcularEnergia()">Calcular Energía</button>
+                </form>
+                
+                <div id="formulaEnergia">
+                    <!-- Aquí se mostrará la fórmula -->
+                    <p>La fórmula para calcular la energía del movimiento ondulatorio es:</p>
+                    <p>$$ U = \frac{1}{2} k A^2 $$</p>
+                </div>
+                
+                <div id="resultadoEnergia">
+                    <!-- Aquí se mostrará el resultado -->
+                </div>
+            </section>
+            <section id="calculo">
+                <h2>Calcular Velocidad de Onda Electromagnética</h2>
+                <p>La velocidad de una onda electromagnética en el vacío se calcula con la fórmula:</p>
+                <p style="text-align: center;">\(c = \frac{1}{{\sqrt{\mu_0 \cdot \varepsilon_0}}}\)</p>
+                <label for="permeabilidad">Permeabilidad del vacío (\(\mu_0\)) (N/A²): </label>
+                <input type="number" id="permeabilidad" step="any">
+                <label for="permitividad">Permitividad del vacío (\(\varepsilon_0\)) (F/m): </label>
+                <input type="number" id="permitividad" step="any">
+                <button onclick="calcularVelocidad()">Calcular</button>
+                <p id="resultadoVelocidad"></p>
+            </section>
+            <section id="calculo-potencia">
+                <h2>Calculadora de Potencia Media de Onda Senoidal</h2>
+                <p>Ingrese los valores para calcular la potencia media:</p>
+                <label for="intensidad">Intensidad Máxima (I<sub>max</sub>) (A):</label>
+                <input type="number" id="intensidad" min="0">
+                <label for="resistencia">Resistencia del Medio (R) (\(\Omega\)):</label>
+                <input type="number" id="resistencia" min="0">
+                <button onclick="calcularPotencia()">Calcular</button>
+                <p id="resultado-potencia"></p>
+                
+                <p style="text-align: center;">\(P_{\text{media}} = \frac{1}{2} I_{\text{max}}^2 R\)</p>
+            </section>
+            
+            
+        </main>
+            
+            
+        
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Acústica - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function actualizarVariables() {
+            var variable1 = document.getElementById("variable1").value;
+            if (variable1 === "velocidad") {
+                document.getElementById("valor1-label").innerHTML = "Módulo Volumétrico (\(B\)):";
+                document.getElementById("valor1-unidad").innerHTML = "(en m^3)";
+                document.getElementById("valor2-label").innerHTML = "Densidad (\(\rho\)):";
+                document.getElementById("valor2-unidad").innerHTML = "(en kg/m^3)";
+            } else if (variable1 === "modulo") {
+                document.getElementById("valor1-label").innerHTML = "Velocidad del sonido (\(v\)):";
+                document.getElementById("valor1-unidad").innerHTML = "(en m/s)";
+                document.getElementById("valor2-label").innerHTML = "Densidad (\(\rho\)):";
+                document.getElementById("valor2-unidad").innerHTML = "(en kg/m^3)";
+            } else if (variable1 === "densidad") {
+                document.getElementById("valor1-label").innerHTML = "Velocidad del sonido (\(v\)):";
+                document.getElementById("valor1-unidad").innerHTML = "(en m/s)";
+                document.getElementById("valor2-label").innerHTML = "Módulo Volumétrico (\(B\)):";
+                document.getElementById("valor2-unidad").innerHTML = "(en m^3)";
+            }
+        }
+
+        function calcular() {
+            var variable1 = document.getElementById("variable1").value;
+            var valor1 = parseFloat(document.getElementById("valor1").value);
+            var valor2 = parseFloat(document.getElementById("valor2").value);
+            var resultado = document.getElementById("resultado1");
+
+            if (variable1 === "velocidad") {
+                resultado.innerHTML = "La velocidad del sonido es: " + Math.sqrt(valor1 / valor2).toFixed(2) + " m/s";
+            } else if (variable1 === "modulo") {
+                resultado.innerHTML = "El módulo volumétrico es: " + (valor1 * valor1 * valor2).toFixed(2) + " m^3";
+            } else if (variable1 === "densidad") {
+                resultado.innerHTML = "La densidad es: " + (valor1 * valor1 / valor2).toFixed(2) + " kg/m^3";
+            }
+        }
+
+        function calcularMovimientoOndulatorio() {
+            var amplitud = parseFloat(document.getElementById("amplitud").value);
+            var numero_onda = parseFloat(document.getElementById("numero_onda").value);
+            var frecuencia_angular = parseFloat(document.getElementById("frecuencia_angular").value);
+            var posicion = parseFloat(document.getElementById("posicion").value);
+            var tiempo = parseFloat(document.getElementById("tiempo").value);
+            var fase = parseFloat(document.getElementById("fase").value);
+            var resultado = document.getElementById("resultado2");
+
+            var valor = amplitud * Math.sin(numero_onda * posicion - frecuencia_angular * tiempo + fase);
+            resultado.innerHTML = "El valor de y(x, t) es: " + valor.toFixed(2);
+        }
+
+        function calcularMAS() {
+            var amplitud = parseFloat(document.getElementById("amplitud").value);
+            var frecuencia = parseFloat(document.getElementById("frecuencia").value);
+            var fase = parseFloat(document.getElementById("fase").value);
+            var tiempo = parseFloat(document.getElementById("tiempo").value);
+            var resultado = document.getElementById("resultado");
+
+            var valor = amplitud * Math.cos(frecuencia * tiempo + fase);
+            resultado.innerHTML = "El valor de x(t) es: " + valor.toFixed(2);
+        }
+
+        function calcularValor() {
+            var valorInicial = parseFloat(document.getElementById("valorInicial").value);
+            var periodo = parseFloat(document.getElementById("periodo").value);
+            var tiempo = parseFloat(document.getElementById("tiempo").value);
+            var resultado = document.getElementById("resultado");
+
+            var valor = valorInicial;
+            if (tiempo >= periodo) {
+                var n = Math.floor(tiempo / periodo);
+                valor = valorInicial;
+                for (var i = 0; i < n; i++) {
+                    valor = valor * (-1);
+                }
+            }
+            resultado.innerHTML = "El valor de f(t+T) es: " + valor.toFixed(2);
+        }
+
+        function calcularFuerza() {
+            var k = parseFloat(document.getElementById("kInput").value);
+            var x = parseFloat(document.getElementById("xInput").value);
+            var resultado = document.getElementById("fInput");
+
+            var fuerza = -k * x;
+            resultado.value = fuerza.toFixed(2);
+        }
+
+        function calcularEsfuerzo() {
+            var fuerza = parseFloat(document.getElementById("fuerza").value);
+            var area = parseFloat(document.getElementById("area").value);
+            var resultado = document.getElementById("resultadoEsfuerzo");
+
+            var esfuerzo = fuerza / area;
+            resultado.innerHTML = "El esfuerzo es: " + esfuerzo.toFixed(2) + " Pascales";
+        }
+
+        function calcularDeformacion() {
+            var constanteElasticidad = parseFloat(document.getElementById("constanteElasticidad").value);
+            var fuerzaAplicada = parseFloat(document.getElementById("fuerzaAplicada").value);
+            var resultadoDeformacion = document.getElementById("deformacionResultado");
+
+            var deformacion = fuerzaAplicada / constanteElasticidad;
+            resultadoDeformacion.value = deformacion.toFixed(2);
+        }
+
+        function calcularIntensidad() {
+            var potencia = parseFloat(document.getElementById("potencia").value);
+            var distancia = parseFloat(document.getElementById("distancia").value);
+            var resultadoIntensidad = document.getElementById("resultadoIntensidad");
+
+            var intensidad = potencia / (4 * Math.PI * distancia * distancia);
+            resultadoIntensidad.innerHTML = "La intensidad es: " + intensidad.toFixed(2) + " W/m^2";
+        }
+
+        function calcularEnergia() {
+    // Obteniendo los valores ingresados por el usuario
+            var amplitud = parseFloat(document.getElementById("amplitudEnergia").value);
+            var constante = parseFloat(document.getElementById("constanteEnergia").value);
+
+    // Calculando la energía según la fórmula U = (1/2) * k * A^2
+            var energia = 0.5 * constante * Math.pow(amplitud, 2);
+
+    // Mostrando el resultado
+            var resultadoHTML = "<p>La energía del movimiento ondulatorio es: " + energia.toFixed(2) + "</p>";
+            document.getElementById("resultadoEnergia").innerHTML = resultadoHTML;
+            MathJax.typeset(); // Actualizar la visualización de la fórmula
+            }
+        function calcularVelocidad() {
+                const permeabilidad = parseFloat(document.getElementById('permeabilidad').value);
+                const permitividad = parseFloat(document.getElementById('permitividad').value);
+
+                if (isNaN(permeabilidad) || isNaN(permitividad)) {
+                alert('Por favor, ingresa valores numéricos válidos.');
+                return;
+                }
+
+                const velocidad = 1 / Math.sqrt(permeabilidad * permitividad);
+
+    // Cambio de nombre de la variable resultado a resultadoVelocidad
+            document.getElementById('resultadoVelocidad').textContent = `La velocidad de la onda electromagnética es: ${velocidad.toFixed(2)} m/s`;
+            }
+        function calcularPotencia() {
+            var intensidadMaxima = parseFloat(document.getElementById("intensidad").value);
+            var resistencia = parseFloat(document.getElementById("resistencia").value);
+
+            if (isNaN(intensidadMaxima) || isNaN(resistencia)) {
+                document.getElementById("resultado-potencia").textContent = "Por favor, ingrese valores numéricos válidos.";
+            } else {
+                var potenciaMedia = (1 / 2) * Math.pow(intensidadMaxima, 2) * resistencia;
+                document.getElementById("resultado-potencia").textContent = "La potencia media de la onda senoidal es: " + potenciaMedia.toFixed(2) + " Watts (W)";
+            }
+        }
+
+        function calcularFrecuenciaCA() {
+            var velocidad = parseFloat(document.getElementById("velocidadCA").value);
+            var longitud = parseFloat(document.getElementById("longitudCA").value);
+            var frecuencia = velocidad / (2 * longitud);
+            document.getElementById("resultadoCA").innerHTML = "La frecuencia es: " + frecuencia.toFixed(2) + " Hz";
+        }
+
+
+
+      
+
+    </script>
+</body>
+</html>
